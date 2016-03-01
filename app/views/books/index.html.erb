@@ -1,4 +1,7 @@
 <h2>All Books</h2>
+<% if !!current_user %>
+  <%= button_to "Add a book", new_book_path, method: :get %>
+<% end %>
 <ul>
   <% @books.each do |book| %>
     <li>

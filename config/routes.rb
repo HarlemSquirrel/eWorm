@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   resources :genres
   resources :reviews
   resources :books
-  resources :users, only: [:show]
+
   devise_for :users
+  resources :users, only: [:show]
   root to: 'visitors#index'
   get '/about', to: 'visitors#about'
 
