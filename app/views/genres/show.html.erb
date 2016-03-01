@@ -1,0 +1,4 @@
+<h2>Books in the <%= @genre.name %> genre</h2>
+<% @genre.books.each do |book| %>
+  <%= render partial: 'books/book', locals: {book: book} %>
+<% end %>
