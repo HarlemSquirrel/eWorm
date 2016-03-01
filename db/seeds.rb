@@ -14,7 +14,7 @@ end
 
 4.times do
   Genre.create(
-    name: Faker::Name.name
+    name: Faker::Book.genre
   )
 end
 
