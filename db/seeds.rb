@@ -5,3 +5,29 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+4.times do
+  Author.create(
+    name: Faker::Name.name
+  )
+end
+
+4.times do
+  Genre.create(
+    name: Faker::Name.name
+  )
+end
+
+6.times do
+  Book.create(
+    title: Faker::Book.title,
+    author: Author.all[rand(Author.all.count)],
+    genre: Genre.all[rand(Genre.all.count)]
+  )
+end
+
+User.create(
+  username: "the_tester",
+  email: "test@test.com",
+  password:"yeswecan"
+)

@@ -1,0 +1,10 @@
+<%= form_for @book do |f| %>
+  <%= f.label :title %>
+  <%= t.text_field :title %>
+
+  <%= f.label :author %>
+  <%= t.collection_select(:author, :author_id, Author.all, :id, :name) %>
+
+  <%= f.label :genre %>
+  <%= t.collection_select(:genre, :genre_id, Genre.all, :id, :name) %>
+<% end %>
