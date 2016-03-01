@@ -15,8 +15,13 @@ RSpec.describe Book, type: :model do
   end
 
   describe '#rating_avg' do
+    book = Book.create(title: "The Test")
+
+    it 'returns nil when there are no reviews' do
+      expect(book.rating_avg).to eq(nil)
+    end
+    
     it 'knows the rating average' do
-      book = Book.create(title: "The Test")
       review1 = Review.create(book: book, rating: 1)
       review2 = Review.create(book: book, rating: 2)
       review1.save

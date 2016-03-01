@@ -4,7 +4,7 @@ class Book < ActiveRecord::Base
   has_many :reviews
 
   def rating_avg
-    return 0 if self.reviews.empty?
+    return nil if self.reviews.empty?
     (self.reviews.collect {|r| r.rating}.inject(:+)) / self.reviews.count
   end
 end
