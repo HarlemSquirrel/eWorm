@@ -23,7 +23,7 @@ a:hover {
 }
 
 body {
-  align-items: center;
+
   background-color: green;
   color: white;
   text-align: center;
@@ -42,15 +42,12 @@ header {
 
 }
 
-div {
-  align-items: center;
-
-  color: white;
-  display: inline-block;
-  text-align: left;
+.main {
+  background-color: rgba(0, 0, 0, 0.3);
+  display: block;
 }
 
-.main {
-  background-color: rgba(0, 0, 0, 0.5);
-  display: block;
+.welcome {
+  display:inline-block;
+  
 }
