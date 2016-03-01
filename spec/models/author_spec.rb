@@ -17,11 +17,11 @@ RSpec.describe Author, type: :model do
     it 'returns nil when there are no reviews' do
       expect(author.rating_avg).to eq(nil)
     end
-    
+
     it 'knows the rating average' do
       book = Book.create(title: "The World is Green", author: author)
-      review1 = Review.create(book: book, rating: 1)
-      review2 = Review.create(book: book, rating: 2)
+      review1 = Review.create(user_id: 1, book: book, content: "a", rating: 1)
+      review2 = Review.create(user_id: 1, book: book, content: "a", rating: 2)
       review1.save
       review2.save
       expect(author.rating_avg).to eq((review1.rating + review2.rating)/2)

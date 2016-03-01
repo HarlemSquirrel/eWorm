@@ -46,5 +46,6 @@ User.create(
     content: Faker::Lorem.paragraph,
     book: Book.all[rand(Book.all.count)],
     user: User.all[rand(User.all.count)],
+    rating: rand(4)+1
   )
 end
