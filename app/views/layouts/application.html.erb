@@ -12,9 +12,17 @@
     <%= render '/layouts/navigation' %>
   </header>
 
-  <%= render '/layouts/messages' %>
+  <div class="main">
+    <%= render '/layouts/messages' %>
 
-  <%= yield %>
+    <%= yield %>
+  </div>
+
+  <footer>
+    <p>
+      Crafted with beer by <%= link_to "HarlemSquirrel", 'http://harlemsquirrel.github.io/' %>
+    </p>
+  </footer>
 
 </body>
 </html>

@@ -15,15 +15,42 @@
  */
 a:link, a:visited {
   color: #e6ffe6;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 body {
+  align-items: center;
   background-color: green;
+  color: white;
+  text-align: center;
+}
+
+header, footer, div {
+  min-width: 400px;
+  max-width: 1800px;
+  margin: 5px auto;
+  padding: 20px;
 }
 
 header {
   background-color: rgba(0, 0, 0, 0.5);
   color: #e6ffe6;
-  margin: 5px;
-  padding: 10px;
+
+}
+
+div {
+  align-items: center;
+
+  color: white;
+  display: inline-block;
+  text-align: left;
+}
+
+.main {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: block;
 }
