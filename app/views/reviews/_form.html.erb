@@ -1,0 +1,8 @@
+<%= form_for @review do |f| %>
+  <%= f.label "Review for #{@book.title}" %>
+  <%= f.text_area :content %>
+  <%= f.hidden_field @review.book, @book.id %>
+
+  <%= f.submit %>
+
+<% end %>

@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   resources :authors
-  resources :genres
-  resources :reviews
   resources :books
+  resources :genres
+
+  resources :reviews
+  get '/books/:id/reviews/new', to: 'reviews#new'
+
 
   devise_for :users
   resources :users, only: [:show]
