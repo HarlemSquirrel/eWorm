@@ -1,17 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  before(:each) do
-    @user = User.create
+  describe 'attributes' do
+    it { should respond_to(:username) }
+    it { should respond_to(:email) }
   end
 
-  describe 'User' do
-    it "has a username" do
-      expect(@user).to respond_to(:username)
-    end
-
-    it "has an email" do
-      expect(@user).to respond_to(:email)
-    end
+  describe 'association' do
+    it { should have_many(:reviews) }
+    it { should have_many(:books).through(:reviews) }
   end
 end
