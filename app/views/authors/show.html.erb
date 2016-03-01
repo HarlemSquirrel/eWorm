@@ -1,0 +1,5 @@
+<h2><%= @author.name %></h2>
+<h3>Books</h3>
+<% @author.books.each do |book| %>
+  <%= render partial: 'books/book', locals: {book: book} %>
+<% end %>
