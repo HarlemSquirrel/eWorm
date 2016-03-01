@@ -2,7 +2,7 @@
   <%= link_to("Home", root_url) %> |
   <%= link_to("About", '/about') %> |
   <%= link_to("Authors", '#') %> |
-  <%= link_to("Books", '#') %> |
+  <%= link_to("Books", books_path) %> |
   <%= link_to("Genres", '#') %> |
   <% if !!current_user %>
     <%= link_to("Sign out", destroy_user_session_path, method: "delete") %>

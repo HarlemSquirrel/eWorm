@@ -22,7 +22,16 @@ end
   Book.create(
     title: Faker::Book.title,
     author: Author.all[rand(Author.all.count)],
-    genre: Genre.all[rand(Genre.all.count)]
+    genre: Genre.all[rand(Genre.all.count)],
+    year_published: Date.today.year - rand(300)
+  )
+end
+
+5.times do
+  User.create(
+  username: Faker::Name.name,
+  email: Faker::Internet.email,
+  password:"superSecurez"
   )
 end
 
@@ -31,3 +40,11 @@ User.create(
   email: "test@test.com",
   password:"yeswecan"
 )
+
+10.times do
+  Review.create(
+    content: Faker::Lorem.paragraph,
+    book: Book.all[rand(Book.all.count)],
+    user: User.all[rand(User.all.count)],
+  )
+end

@@ -1,0 +1,17 @@
+<h2><%= @book.title %></h2>
+<h4><%= link_to @book.genre.name, genre_path(@book.genre) %></h4>
+<h3><%= link_to @book.author.name, author_path(@book.author) %></h3>
+
+<div class="reviews">
+  <h3>Reviews</h3>
+  <% @book.reviews.each do |review| %>
+    <div class="review">
+
+      <p>
+        <%= link_to review.user.username, user_path(review.user) %>: 
+        <%= review.content %>
+      </p>
+    </div>
+  <% end %>
+
+</div>
