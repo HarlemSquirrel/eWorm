@@ -54,3 +54,4 @@ end
 
   # secure user management
   gem 'devise'
+  gem 'omniauth-twitter'
