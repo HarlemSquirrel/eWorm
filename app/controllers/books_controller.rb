@@ -31,6 +31,8 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @review_by_current_user = @book.reviews.detect {|r| r.user == current_user}
+    #binding.pry
   end
 
   private

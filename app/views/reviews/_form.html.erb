@@ -2,9 +2,10 @@
   <%= "Review for #{@book.title}" %><br>
   <%= f.label :rating %>
   <%= f.select :rating, [1,2,3,4,5] %><br>
-  <%= f.text_area :content, required: true %><br>
+  <%= f.text_area :content, required: true, size: "50x20" %><br>
   <%= f.hidden_field :book_id, value: @book.id %>
 
   <%= f.submit %>
-
 <% end %>
+<br>
+<%= button_to 'Cancel', book_path(@book), method: :get %>

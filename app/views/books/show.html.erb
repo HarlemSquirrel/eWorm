@@ -3,7 +3,11 @@
   by <%= link_to @book.author.name, author_path(@book.author) %></h2>
 <h4>Genre: <%= link_to @book.genre.name, genre_path(@book.genre) %></h4>
 <h4>Rating Average: <%= @book.rating_avg %></h4>
-<%= button_to "Review this book", "/books/#{@book.id}/reviews/new", method: :get %>
+<% if !!@review_by_current_user %>
+  <%= button_to "Edit your review", edit_review_path(@review_by_current_user), method: :get %>
+<% elsif !!current_user %>
+  <%= button_to "Review this book", "/books/#{@book.id}/reviews/new", method: :get %>
+<% end %>
 
 <div class="reviews">
   <h3>Reviews</h3>

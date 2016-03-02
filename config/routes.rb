@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :books
   resources :genres
 
-  resources :reviews
+  resources :reviews, only: [:show, :create, :edit, :update]
   get '/books/:id/reviews/new', to: 'reviews#new'
 
 

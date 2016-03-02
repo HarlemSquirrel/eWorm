@@ -23,31 +23,40 @@ a:hover {
 }
 
 body {
-
+  /*min-width: 400px;
+  max-width: 1800px;*/
   background-color: green;
   color: white;
   text-align: center;
 }
 
 header, footer, div {
-  min-width: 400px;
-  max-width: 1800px;
+
   margin: 5px auto;
   padding: 20px;
 }
 
 header {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   color: #e6ffe6;
+  position: fixed;
+  top: 0;
+
 
 }
+
 
 .main {
   background-color: rgba(0, 0, 0, 0.3);
   display: block;
+  margin-top :130px;
+}
+
+.reviews {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .welcome {
-  display:inline-block;
-  
+  background-color: rgba(0, 0, 0, 0.5);
+  display: block;
 }
