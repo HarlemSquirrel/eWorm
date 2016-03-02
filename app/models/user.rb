@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
 
   has_many :reviews
   has_many :books, through: :reviews
+
+  scope :top_reviewers, -> { order('reviews_count DESC').limit(3) }
 end

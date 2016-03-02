@@ -16,6 +16,13 @@
   <h3><%= @num_users %> users have written <%= @num_reviews %> reviews on <%= @num_books %> books and counting!</h3>
 </div>
 
+<div class="top_reviewers">
+    Right now the top reviewers are
+    <%= link_to @top_reviewers[0].username, user_path(@top_reviewers[0]) %>(<%= @top_reviewers[0].reviews_count %>),
+    <%= link_to @top_reviewers[1].username, user_path(@top_reviewers[1]) %>(<%= @top_reviewers[1].reviews_count %>), and
+    <%= link_to @top_reviewers[2].username, user_path(@top_reviewers[2]) %>(<%= @top_reviewers[2].reviews_count %>)!
+</div>
+
 <div class="reviews">
   <h3>Recent Reviews</h3>
   <% @recent_reviews.each do |review| %>
