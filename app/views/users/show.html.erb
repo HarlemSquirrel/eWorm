@@ -1,1 +1,10 @@
 <h2>Profile for <%= @user.username %></h2>
+<% if !!current_user && current_user == @user %>
+  <%= link_to("Edit my info", edit_user_registration_path(current_user)) %>
+<% end %>
+
+<% @user.reviews.each do |review| %>
+  <div class="review">
+    <%= render partial: 'reviews/review', locals: {review: review} %>
+  </div>
+<% end %>

@@ -31,7 +31,6 @@ body {
 }
 
 header, footer, div {
-
   margin: 5px auto;
   padding: 20px;
 }
@@ -41,8 +40,6 @@ header {
   color: #e6ffe6;
   position: fixed;
   top: 0;
-
-
 }
 
 
@@ -59,4 +56,8 @@ header {
 .welcome {
   background-color: rgba(0, 0, 0, 0.5);
   display: block;
+}
+
+.field {
+  padding: 5px;
 }

@@ -5,6 +5,6 @@ class Book < ActiveRecord::Base
 
   def rating_avg
     return nil if self.reviews.empty?
-    (self.reviews.collect {|r| r.rating}.inject(:+)) / self.reviews.count.to_f
+    ((self.reviews.collect {|r| r.rating}.inject(:+)) / self.reviews.count.to_f).round(1)
   end
 end
