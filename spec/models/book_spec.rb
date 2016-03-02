@@ -7,7 +7,7 @@ RSpec.describe Book, type: :model do
     @book = author.books.create(title: "Getting Testy", genre: genre, year_published: 1)
     @book.save
     @review1 = @book.reviews.create(user_id: 1, content: "terrible", rating: 1)
-    @review2 = @book.reviews.create(user_id: 1, content: "not good", rating: 2)
+    @review2 = @book.reviews.create(user_id: 2, content: "not good", rating: 2)
   end
 
   describe 'attributes' do

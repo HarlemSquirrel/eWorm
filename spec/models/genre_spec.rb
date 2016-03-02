@@ -15,7 +15,6 @@ RSpec.describe Genre, type: :model do
     it { should validate_length_of(:name)}
   end
 
-
   describe '#rating_avg' do
     genre = Genre.create(name: "Pulpy Fiction")
     unsaved_genre = Genre.new
@@ -27,9 +26,8 @@ RSpec.describe Genre, type: :model do
     it 'knows the rating average' do
       book = genre.books.create(title: "The World is Green", author_id: 1)
       review1 = book.reviews.create(user_id: 1, content: "a", rating: 5)
-      review2 = book.reviews.create(user_id: 1, content: "a", rating: 2)
+      review2 = book.reviews.create(user_id: 2, content: "a", rating: 2)
 
-      #binding.pry
       expect(genre.rating_avg).to eq((review1.rating + review2.rating)/2.0)
     end
   end
