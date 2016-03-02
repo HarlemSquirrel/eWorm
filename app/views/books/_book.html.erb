@@ -1,3 +1,7 @@
-<h3><%= link_to book.title, book_path(book) %></h3>
+<% book.rating_avg.round.times do %>
+  <%= image_tag "worm-24px.png"%>
+<% end %>
+<em><%= link_to book.title, book_path(book) %></em>
 by <%= link_to book.author.name, author_path(book.author) %>
  ~ <%= link_to book.genre.name, genre_path(book.genre) %>
+ <br><br>

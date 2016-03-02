@@ -20,11 +20,11 @@ RSpec.describe Author, type: :model do
 
     it 'knows the rating average' do
       book = Book.create(title: "The World is Green", author: author)
-      review1 = Review.create(user_id: 1, book: book, content: "a", rating: 1)
+      review1 = Review.create(user_id: 1, book: book, content: "a", rating: 5)
       review2 = Review.create(user_id: 1, book: book, content: "a", rating: 2)
       review1.save
       review2.save
-      expect(author.rating_avg).to eq((review1.rating + review2.rating)/2)
+      expect(author.rating_avg).to eq((review1.rating + review2.rating)/2.0)
     end
   end
 end

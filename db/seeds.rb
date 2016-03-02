@@ -27,7 +27,7 @@ end
   )
 end
 
-5.times do
+10.times do
   User.create(
   username: Faker::Name.name,
   email: Faker::Internet.email,
@@ -41,7 +41,7 @@ User.create(
   password:"yeswecan"
 )
 
-10.times do
+30.times do
   Review.create(
     content: Faker::Lorem.paragraph,
     book: Book.all[rand(Book.all.count)],
