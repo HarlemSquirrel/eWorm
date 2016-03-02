@@ -12,7 +12,7 @@
 
 <div class="reviews">
   <h3>Reviews</h3>
-  <% if @book.reviews.empty? %>
+  <% if @book.unreviewed? %>
     No reviews...yet!
   <% else %>
     <% @book.reviews.each do |review| %>

@@ -1,4 +1,4 @@
-<% if !book.reviews.empty? %>
+<% unless book.unreviewed? %>
   <% book.rating_avg.round.times do %>
     <%= image_tag "worm-24px.png"%>
   <% end %>
