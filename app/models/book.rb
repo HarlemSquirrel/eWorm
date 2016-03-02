@@ -10,4 +10,8 @@ class Book < ActiveRecord::Base
     return "no reviews...yet" if self.reviews.empty?
     ((self.reviews.collect {|r| r.rating}.inject(:+)) / self.reviews.count.to_f).round(1)
   end
+
+  def unreviewed?
+    self.reviews.empty?
+  end
 end

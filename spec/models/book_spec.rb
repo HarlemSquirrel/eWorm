@@ -8,6 +8,8 @@ RSpec.describe Book, type: :model do
     @book.save
     @review1 = @book.reviews.create(user_id: 1, content: "terrible", rating: 1)
     @review2 = @book.reviews.create(user_id: 2, content: "not good", rating: 2)
+
+    @unsaved_book = Book.new
   end
 
   describe 'attributes' do
@@ -26,13 +28,22 @@ RSpec.describe Book, type: :model do
   end
 
   describe '#rating_avg' do
-    unsaved_book = Book.new
     it 'returns nil when there are no reviews' do
-      expect(unsaved_book.rating_avg).to eq("no reviews...yet")
+      expect(@unsaved_book.rating_avg).to eq("no reviews...yet")
     end
 
     it 'knows the rating average' do
       expect(@book.rating_avg).to eq((@review1.rating + @review2.rating)/2.0)
+    end
+  end
+
+  describe '#unreviewed?' do
+    it 'returns true for books with no reviews' do
+      expect(@unsaved_book.unreviewed?).to eq(true)
+    end
+
+    it 'returns false for books with reviews' do
+      expect(@book.unreviewed?).to eq(false)
     end
   end
 end
