@@ -12,10 +12,14 @@
 
 <div class="reviews">
   <h3>Reviews</h3>
-  <% @book.reviews.each do |review| %>
-    <div class="review">
-      <%= render partial: 'reviews/review', locals: {review: review} %>
-    </div>
+  <% if @book.reviews.empty? %>
+    No reviews...yet!
+  <% else %>
+    <% @book.reviews.each do |review| %>
+      <div class="review">
+        <%= render partial: 'reviews/review', locals: {review: review} %>
+      </div>
+    <% end %>
   <% end %>
 
 </div>

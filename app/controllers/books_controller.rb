@@ -4,37 +4,31 @@ class BooksController < ApplicationController
   end
 
   def create
-    if logged_in?
-      @book = Book.create(
-        title: book_params[:title],
-        year_published: book_params[:year_published],
-        author: Author.find_or_create_by(name: book_params[:author]),
-        genre: Genre.find_or_create_by(name: book_params[:genre])
-      )
+    redirect_guests
 
-      if @book.valid?
-        @book.save
-        flash.notice = "Book addition successful!"
-        redirect_to book_path(@book)
-      else
-        flash.alert = "Invalid info. Please try again."
-        redirect_to new_book_path
-      end
+    @book = Book.create(
+      title: book_params[:title],
+      year_published: book_params[:year_published],
+      author: Author.find_or_create_by(name: book_params[:author]),
+      genre: Genre.find_or_create_by(name: book_params[:genre])
+    )
+
+    if @book.valid?
+      @book.save
+      flash.notice = "Book addition successful!"
+      redirect_to book_path(@book)
     else
-      flash.alert = "You must be logged in to add a book."
-      redirect_to new_user_session_path
+      flash.alert = "Invalid info. Please try again."
+      redirect_to new_book_path
     end
   end
 
   def new
-    if logged_in?
-      @book = Book.new
-      @authors = Author.all
-      @genres = Genre.all
-    else
-      flash.alert = "You must be logged in to add a book."
-      redirect_to new_user_session_path
-    end
+    redirect_guests
+
+    @book = Book.new
+    @authors = Author.all
+    @genres = Genre.all
   end
 
   def show
@@ -45,5 +39,12 @@ class BooksController < ApplicationController
   private
   def book_params
     params.require(:book).permit(:title, :author, :genre, :year_published)
+  end
+
+  def redirect_guests
+    if !logged_in?
+      flash.alert = "You must be logged in to add a book."
+      redirect_to new_user_session_path
+    end
   end
 end
