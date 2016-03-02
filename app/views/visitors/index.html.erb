@@ -18,7 +18,7 @@
 
 <div class="reviews">
   <h3>Recent Reviews</h3>
-  <% @reviews.each do |review| %>
+  <% @recent_reviews.each do |review| %>
     <%= render partial: 'reviews/review', locals: {review: review} %>
   <% end %>
 </div>

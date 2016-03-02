@@ -1,9 +1,9 @@
 class VisitorsController < ApplicationController
   def index
-    @num_books = Book.all.count
-    @num_reviews = Review.all.count
-    @num_users = User.all.count
-    @reviews= Review.all[(@num_reviews-4)..(@num_reviews-1)]
+    @num_books = Book.count
+    @num_reviews = Review.count
+    @num_users = User.count
+    @recent_reviews = Review.last(3).reverse
   end
 
   def about
