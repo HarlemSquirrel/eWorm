@@ -40,6 +40,7 @@ group :development, :test do
   gem 'faker'
   gem 'factory_girl'
   gem 'shoulda'
+  gem 'database_cleaner'
 end
 
 group :development do

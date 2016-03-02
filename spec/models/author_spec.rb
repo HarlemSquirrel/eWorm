@@ -11,19 +11,23 @@ RSpec.describe Author, type: :model do
     it { should have_many(:reviews).through(:books) }
   end
 
+  describe 'validations' do
+    it { should validate_length_of(:name)}
+  end
+
   describe '#rating_avg' do
     author = Author.create(name: "Kermit the Frog")
+    unsaved_author = Author.new
 
     it 'returns nil when there are no reviews' do
-      expect(author.rating_avg).to eq(nil)
+      expect(unsaved_author.rating_avg).to eq("no reviews...yet")
     end
 
     it 'knows the rating average' do
-      book = Book.create(title: "The World is Green", author: author)
-      review1 = Review.create(user_id: 1, book: book, content: "a", rating: 5)
-      review2 = Review.create(user_id: 1, book: book, content: "a", rating: 2)
-      review1.save
-      review2.save
+      book = author.books.create(title: "The World is Green", genre_id: 1)
+      review1 = book.reviews.create(user_id: 1, content: "a", rating: 5)
+      review2 = book.reviews.create(user_id: 1, content: "a", rating: 2)
+      
       expect(author.rating_avg).to eq((review1.rating + review2.rating)/2.0)
     end
   end

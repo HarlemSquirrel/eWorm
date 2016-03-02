@@ -5,10 +5,20 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    review = Review.create(review_params)
-    review.user = current_user
-    review.save
-    redirect_to book_path(review.book)
+    if logged_in?
+      @review = current_user.reviews.create(review_params)
+      if review.valid?
+        @review.save
+        redirect_to book_path(@review.book)
+      else
+        flash.alert = "Invalid info. Please try again."
+        @book = @review.book
+        render :new
+      end
+    else
+      flash.alert = "You must be logged in to write a review."
+      redirect_to new_user_session_path
+    end
   end
 
   def edit

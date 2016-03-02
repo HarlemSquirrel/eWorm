@@ -11,19 +11,25 @@ RSpec.describe Genre, type: :model do
     it { should have_many(:reviews).through(:books) }
   end
 
+  describe 'validations' do
+    it { should validate_length_of(:name)}
+  end
+
+
   describe '#rating_avg' do
     genre = Genre.create(name: "Pulpy Fiction")
+    unsaved_genre = Genre.new
 
     it 'returns nil when there are no reviews' do
-      expect(genre.rating_avg).to eq(nil)
+      expect(unsaved_genre.rating_avg).to eq("no reviews...yet")
     end
 
     it 'knows the rating average' do
-      book = Book.create(title: "The World is Green", genre: genre)
-      review1 = Review.create(user_id: 1, book: book, content: "a", rating: 1)
-      review2 = Review.create(user_id: 1, book: book, content: "a", rating: 2)
-      review1.save
-      review2.save
+      book = genre.books.create(title: "The World is Green", author_id: 1)
+      review1 = book.reviews.create(user_id: 1, content: "a", rating: 5)
+      review2 = book.reviews.create(user_id: 1, content: "a", rating: 2)
+
+      #binding.pry
       expect(genre.rating_avg).to eq((review1.rating + review2.rating)/2.0)
     end
   end
