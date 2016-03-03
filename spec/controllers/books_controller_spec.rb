@@ -20,7 +20,7 @@ RSpec.describe BooksController, type: :controller do
     end
   end
 
-  describe 'GET create' do
+  describe 'PUT create' do
     it 'when signed in, creats a new book and redirects to the show page' do
       user = FactoryGirl.create(:user)
       sign_in(user)
@@ -41,6 +41,22 @@ RSpec.describe BooksController, type: :controller do
       put :create, params
       expect(response).to redirect_to(new_user_session_path)
       expect(Book.count).to eq(num_books)
+    end
+  end
+
+  describe 'GET new' do
+    it 'when signed in, allows access' do
+      user = FactoryGirl.create(:user)
+      sign_in(user)
+
+      get :new
+      expect(response).to render_template(:new)
+    end
+
+    it 'when not signed in, redirects to login page' do
+
+      get :new
+      expect(response).to redirect_to(new_user_session_path)
     end
   end
 end
