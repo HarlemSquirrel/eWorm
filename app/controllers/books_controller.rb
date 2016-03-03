@@ -34,7 +34,11 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    @review_by_current_user = current_user.reviews.where(book: @book).first
+
+    if logged_in?
+      @review_by_current_user = current_user.reviews.where(book: @book).first
+    end
+
   end
 
   private

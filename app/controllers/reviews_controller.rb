@@ -41,10 +41,10 @@ class ReviewsController < ApplicationController
     if logged_in?
       @review = current_user.reviews.find(params[:id])
       @review.update(review_params)
-      if review.valid?
-        review.save
+      if @review.valid?
+        @review.save
         flash.notice = "Review edit successful!"
-        redirect_to book_path(review.book)
+        redirect_to book_path(@review.book)
       else
         @book = @review.book
         render :edit
