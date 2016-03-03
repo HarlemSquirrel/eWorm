@@ -15,6 +15,11 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
+  def redirect_guests
+    flash.alert = "You must be logged in to do this."
+    redirect_to new_user_session_path
+  end
+
   protected
 
   def configure_permitted_parameters
