@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :authors
+  resources :authors, only: [:index, :show]
   resources :books
-  resources :genres
+  resources :genres, only: [:index, :show]
 
   resources :reviews, only: [:create, :edit, :update]
   get '/books/:id/reviews/new', to: 'reviews#new'
