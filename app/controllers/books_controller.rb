@@ -4,32 +4,36 @@ class BooksController < ApplicationController
   end
 
   def create
-    redirect_guests
+    if logged_in?
+      @book = Book.create(
+        title: book_params[:title],
+        year_published: book_params[:year_published],
+        author: Author.find_or_create_by(name: book_params[:author]),
+        genre: Genre.find_or_create_by(name: book_params[:genre])
+      )
 
-    @book = Book.create(
-      title: book_params[:title],
-      year_published: book_params[:year_published],
-      author: Author.find_or_create_by(name: book_params[:author]),
-      genre: Genre.find_or_create_by(name: book_params[:genre])
-    )
-
-    if @book.valid?
-      @book.save
-      flash.notice = "Book addition successful!"
-      redirect_to book_path(@book)
+      if @book.valid?
+        @book.save
+        flash.notice = "Book addition successful!"
+        redirect_to book_path(@book)
+      else
+        @authors = Author.all
+        @genres = Genre.all
+        render :new
+      end
     else
-      @authors = Author.all
-      @genres = Genre.all
-      render :new
+      redirect_guests
     end
   end
 
   def new
-    redirect_guests
-
-    @book = Book.new
-    @authors = Author.all
-    @genres = Genre.all
+    if logged_in?
+      @book = Book.new
+      @authors = Author.all
+      @genres = Genre.all
+    else
+      redirect_guests
+    end
   end
 
   def show
@@ -47,9 +51,7 @@ class BooksController < ApplicationController
   end
 
   def redirect_guests
-    if !logged_in?
-      flash.alert = "You must be logged in to add a book."
-      redirect_to new_user_session_path
-    end
+    flash.alert = "You must be logged in to add a book."
+    redirect_to new_user_session_path
   end
 end
