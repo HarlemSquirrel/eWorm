@@ -15,7 +15,6 @@ class ReviewsController < ApplicationController
         @review.save
         redirect_to book_path(@review.book)
       else
-        flash.alert = "Invalid info. Please try again."
         @book = @review.book
         render :new
       end
@@ -29,7 +28,7 @@ class ReviewsController < ApplicationController
       @review = Review.find(params[:id])
       @book = @review.book
       unless @review.user == current_user
-        flash[:alert] = "You can only edit your own reviews"
+        flash.alert = "You can only edit your own reviews"
         redirect_to @book
       end
     else
@@ -39,13 +38,14 @@ class ReviewsController < ApplicationController
 
   def update
     if logged_in?
-      review = current_user.reviews.find(params[:id])
-      review.update(review_params)
+      @review = current_user.reviews.find(params[:id])
+      @review.update(review_params)
       if review.valid?
         review.save
         redirect_to book_path(review.book)
       else
-        flash[:alert] = "something went wrong, please try again"
+        @book = @review.book
+        render :edit
       end
     else
       redirect_guests
