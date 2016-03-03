@@ -4,7 +4,7 @@
   <%= link_to("Authors", authors_path) %> |
   <%= link_to("Books", books_path) %> |
   <%= link_to("Genres", genres_path) %> |
-  <% if !!current_user %>
+  <% if logged_in? %>
     <%= link_to("My Profile", user_path(current_user)) %> |
     <%= link_to("Sign out", destroy_user_session_path, method: "delete") %>
   <% else %>

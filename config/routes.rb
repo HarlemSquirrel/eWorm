@@ -3,10 +3,9 @@ Rails.application.routes.draw do
   resources :books
   resources :genres
 
-  resources :reviews, only: [:show, :create, :edit, :update]
+  resources :reviews, only: [:create, :edit, :update]
   get '/books/:id/reviews/new', to: 'reviews#new'
 
-  #devise_for :users
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users, only: [:show]
 

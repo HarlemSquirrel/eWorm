@@ -13,6 +13,7 @@ class ReviewsController < ApplicationController
       @review = current_user.reviews.create(review_params)
       if @review.valid?
         @review.save
+        flash.notice = "Review creation successful!"
         redirect_to book_path(@review.book)
       else
         @book = @review.book
@@ -42,6 +43,7 @@ class ReviewsController < ApplicationController
       @review.update(review_params)
       if review.valid?
         review.save
+        flash.notice = "Review edit successful!"
         redirect_to book_path(review.book)
       else
         @book = @review.book

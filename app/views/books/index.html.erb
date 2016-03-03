@@ -1,5 +1,5 @@
 <h2>All Books</h2>
-<% if !!current_user %>
+<% if logged_in? %>
   <%= button_to "Add a book", new_book_path, method: :get %>
 <% end %>
 <ul>

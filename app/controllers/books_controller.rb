@@ -18,8 +18,9 @@ class BooksController < ApplicationController
       flash.notice = "Book addition successful!"
       redirect_to book_path(@book)
     else
-      flash.alert = "Invalid info. Please try again."
-      redirect_to new_book_path
+      @authors = Author.all
+      @genres = Genre.all
+      render :new
     end
   end
 
@@ -33,7 +34,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    @review_by_current_user = @book.reviews.detect {|r| r.user == current_user}
+    @review_by_current_user = current_user.reviews.where(book: @book).first
   end
 
   private
