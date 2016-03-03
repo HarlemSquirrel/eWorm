@@ -16,7 +16,7 @@ RSpec.describe Author, type: :model do
   end
 
   describe '#rating_avg' do
-    author = Author.create(name: "Kermit the Frog")
+    author = FactoryGirl.create(:author)
     unsaved_author = Author.new
 
     it 'returns nil when there are no reviews' do

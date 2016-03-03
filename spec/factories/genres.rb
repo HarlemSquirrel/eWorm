@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :genre do
-    name "MyString"
+    name "Truthy Fiction"
   end
 end

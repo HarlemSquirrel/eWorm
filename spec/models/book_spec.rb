@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Book, type: :model do
   before(:all) do
-    author = Author.create(name: "George III")
-    genre = Genre.create(name: "truthy")
+    author = FactoryGirl.create(:author)
+    genre = FactoryGirl.create(:genre)
     @book = author.books.create(title: "Getting Testy", genre: genre, year_published: 1)
-    @book.save
+
     @review1 = @book.reviews.create(user_id: 1, content: "terrible", rating: 1)
     @review2 = @book.reviews.create(user_id: 2, content: "not good", rating: 2)
 
