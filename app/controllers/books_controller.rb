@@ -39,6 +39,10 @@ class BooksController < ApplicationController
       @review_by_current_user = current_user.reviews.where(book: @book).first
     end
 
+    respond_to do |f|
+      f.html { render :show }
+      f.json { render json: @book }
+    end
   end
 
   private
