@@ -55,3 +55,6 @@ end
   # secure user management
   gem 'devise'
   gem 'omniauth-twitter'
+
+  # serializer
+  gem 'active_model_serializers'
