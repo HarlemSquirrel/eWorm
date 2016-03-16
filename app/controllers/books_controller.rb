@@ -1,6 +1,10 @@
 class BooksController < ApplicationController
   def index
     @books = Book.all
+    respond_to do |f|
+      f.html { render :index }
+      f.json { render json: @books }
+    end
   end
 
   def create
