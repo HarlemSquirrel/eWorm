@@ -1,4 +1,4 @@
-<p>|
+<p>Genres: | <a href="#" class="genre" id="*">All</a> | 
   <% @genres.each do |genre| %>
     <a href="#" class="genre" id="<%=genre.name%>"><%=genre.name%></a> |
   <% end %>
@@ -21,17 +21,5 @@
 
   newBookForm();
 
-  $('.genre').on('click', function () {
-    var genre = $(this).attr('id');
-    var books = [];
-    $('#books').empty();
-    $.get("/books.json", function (data) {
-      $.each(data.books, function (index, book) {
-        if (book.genre.name === genre) {
-          books.push(book);
-        }
-      });
-      updateBooksView(books);
-    })
-  })
+  genreFilter();
 </script>

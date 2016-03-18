@@ -45,6 +45,22 @@ function updateBookView(newId) {
   });
 }
 
+function genreFilter() {
+  $('.genre').on('click', function () {
+    var genre = $(this).attr('id');
+    var books = [];
+    $('#books').empty();
+    $.get("/books.json", function (data) {
+      $.each(data.books, function (index, book) {
+        if (book.genre.name === genre || genre === "*") {
+          books.push(book);
+        }
+      });
+      updateBooksView(books);
+    });
+  });
+}
+
 function newBookForm() {
   $('.toggleForm').on('click', function () {
     $('.newBookForm').toggle();
