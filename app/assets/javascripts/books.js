@@ -1,23 +1,23 @@
-function loadBooks() {
-  $.get("/books.json", function(data) {
-
-    //debugger;
-
-    $.each(data.books, function (index, book) {
-      $('#books').append(
-        '<div class="book" id="' + book.id.toString() + '">' +
-        '<a href="/books/' + book.id + '">' + book.title + '</a>' +
-        ' (' + book.rating_avg.toString() + '/5)' +
-        ' by ' + '<a href="/authors/' + book.author.id.toString() + '">' + book.author.name +
-        '</div>'
-      );
-      //debugger;
-    });
+function updateBooksView(books) {
+  $.each(books, function (index, book) {
+    $('#books').append(
+      '<div class="book" id="' + book.id + '">' +
+      '<a href="/books/' + book.id + '">' + book.title + '</a>' +
+      ' (' + book.rating_avg + '/5)' +
+      ' by ' + '<a href="/authors/' + book.author.id + '">' + book.author.name +
+      '</div>'
+    );
   });
 }
 
-function updateView(nextId) {
-  $.get("/books/" + nextId + ".json", function(data) {
+function loadBooks() {
+  $.get("/books.json", function (data) {
+    updateBooksView(data.books);
+  })
+}
+
+function updateView(newId) {
+  $.get("/books/" + newId + ".json", function(data) {
     var book = data.book;
     $(".bookTitle").text(book.title);
     $(".bookAuthor a").attr("href", "/authors/" + book.author.id).text(book.author.name);
@@ -41,32 +41,26 @@ function updateView(nextId) {
   });
 }
 
-$(document).ready(function () {
-  //debugger;
-  if (!!$('#books')) {
-    loadBooks();
-  } else if ($('#book')) {
-    updateView(parseInt($(".js-next").attr("data-id")));
+function showBook() {
+  updateView(parseInt($(".js-next").attr("data-id")));
 
-    var booksCount;
+  var booksCount;
 
-    $.get("/books.json", function(data) { booksCount = data.books.length; });
+  $.get("/books.json", function(data) { booksCount = data.books.length; });
 
-    $(".js-next").on("click", function() {
-      var curId = parseInt($(".js-next").attr("data-id"));
-      if (curId < booksCount) {
-        var newId = curId + 1;
-        updateView(newId);
-      }
-    });
+  $(".js-next").on("click", function() {
+    var curId = parseInt($(".js-next").attr("data-id"));
+    if (curId < booksCount) {
+      var newId = curId + 1;
+      updateView(newId);
+    }
+  });
 
-    $(".js-pre").on("click", function() {
-      var curId = parseInt($(".js-next").attr("data-id"));
-      if (curId > 1) {
-        var newId = curId - 1;
-        updateView(newId);
-      }
-    });
-  }
-
-});
+  $(".js-pre").on("click", function() {
+    var curId = parseInt($(".js-next").attr("data-id"));
+    if (curId > 1) {
+      var newId = curId - 1;
+      updateView(newId);
+    }
+  });
+}
