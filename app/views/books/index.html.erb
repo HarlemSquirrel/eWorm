@@ -3,51 +3,5 @@
   <%= button_to "Add a book", new_book_path, method: :get %>
 <% end %>
 
-<div class="books">
+<div id="books">
 </div>
-
-<script type="text/javascript" charset="utf-8">
-$(function () {
-  $.get("/books.json", function(data) {
-    var books = data["books"];
-    $.each(books, function (index, book) {
-      $('.books').append(
-        '<div class="book" id="' + book["id"] + '">' +
-        '<a href="/books/' + book["id"] + '">' + book["title"] + '</a>' +
-        ' (' + book["rating_avg"] + '/5)' + 
-        ' by ' + '<a href="/authors/' + book["author"]["id"] + '">' + book["author"]["name"] +
-        '</div>'
-      );
-    })
-
-  })
-  $(".js-pre").on("click", function() {
-    console.log("clicky pre!");
-    var nextId = parseInt($(".js-next").attr("data-id")) - 1;
-    //$.get("/authors/" + nextId + ".json", function(data) {
-      // get post
-      //var author = data["author"];
-      //$(".authorName").text("Books by " + author["name"]);
-      //$(".postTitle").text(post["title"]);
-      //$(".postBody").text(post["description"]);
-      // re-set the id to current on the link
-      //$(".js-next").attr("data-id", author["id"]);
-    //});
-  });
-
-  $(".js-next").on("click", function(event) {
-    event.preventDefault();
-    console.log("clicky next!");
-    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-    //$.get("/authors/" + nextId + ".json", function(data) {
-      // get post
-      //var author = data["author"];
-      //$(".authorName").text("Books by " + author["name"]);
-      //$(".postTitle").text(post["title"]);
-      //$(".postBody").text(post["description"]);
-      // re-set the id to current on the link
-      //$(".js-next").attr("data-id", author["id"]);
-    //});
-  });
-});
-</script>
