@@ -3,7 +3,7 @@ function updateBooksView(books) {
     $('#books').append(
       '<div class="book" id="' + book.id + '">' +
       '<a href="/books/' + book.id + '">' + book.title + '</a>' +
-      ' (' + book.rating_avg + '/5)' +
+      ' (' + book.rating_avg + ')' +
       ' by ' + '<a href="/authors/' + book.author.id + '">' + book.author.name +
       '</div>'
     );
@@ -16,7 +16,22 @@ function loadBooks() {
   })
 }
 
-function updateView(newId) {
+function loadReviews(book) {
+  $(".reviews").empty();
+  if (book.reviews.length === 0) {
+    $(".reviews").html("No reviews...yet!");
+  } else {
+    $.each(book.reviews, function(index, review) {
+      $(".reviews").append('<div class="review">' +
+        '<a href="/users/' + review.user.id + '">' + review.user.username + '</a>' +
+        ' says, "' + review.content + '"' +
+        ' (' + review.rating + '/5)</div>'
+      );
+    });
+  }
+}
+
+function updateBookView(newId) {
   $.get("/books/" + newId + ".json", function(data) {
     var book = data.book;
     $(".bookTitle").text(book.title);
@@ -26,23 +41,32 @@ function updateView(newId) {
     $(".js-next").attr("data-id", book.id);
 
     // show reviews
-    $(".reviews").empty();
-    if (book.reviews.length === 0) {
-      $(".reviews").html("No reviews...yet!");
-    } else {
-      $.each(book.reviews, function(index, review) {
-        $(".reviews").append('<div class="review">' +
-          '<a href="/users/' + review.user.id + '">' + review.user.username + '</a>' +
-          ' says, "' + review.content + '"' +
-          ' (' + review.rating + '/5)</div>'
-        );
-      });
-    }
+    loadReviews(book)
+  });
+}
+
+function newBookForm() {
+  $('.toggleForm').on('click', function () {
+    $('.newBookForm').toggle();
+  });
+
+  $('form').submit(function(event) {
+    //prevent form from submitting the default way
+    event.preventDefault();
+
+    var values = $(this).serialize();
+
+    var posting = $.post('/books', values);
+
+    posting.done(function(data) {
+      //var book = [data.book];
+      updateBooksView([data.book]);
+    });
   });
 }
 
 function showBook() {
-  updateView(parseInt($(".js-next").attr("data-id")));
+  updateBookView(parseInt($(".js-next").attr("data-id")));
 
   var booksCount;
 
@@ -52,7 +76,7 @@ function showBook() {
     var curId = parseInt($(".js-next").attr("data-id"));
     if (curId < booksCount) {
       var newId = curId + 1;
-      updateView(newId);
+      updateBookView(newId);
     }
   });
 
@@ -60,7 +84,7 @@ function showBook() {
     var curId = parseInt($(".js-next").attr("data-id"));
     if (curId > 1) {
       var newId = curId - 1;
-      updateView(newId);
+      updateBookView(newId);
     }
   });
 }

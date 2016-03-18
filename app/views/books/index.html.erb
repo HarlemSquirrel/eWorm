@@ -1,6 +1,16 @@
+<p>|
+  <% @genres.each do |genre| %>
+    <a href="#" class="genre" id="<%=genre.name%>"><%=genre.name%></a> |
+  <% end %>
+</p>
 <h2>All Books</h2>
 <% if logged_in? %>
-  <%= button_to "Add a book", new_book_path, method: :get %>
+  <div class="toggle">
+    <a href="#" class="toggleForm">Add a Book</a>
+  </div>
+  <div class="newBookForm" style="display: none;">
+    <%= render 'form' %>
+  </div>
 <% end %>
 
 <div id="books">
@@ -8,4 +18,20 @@
 
 <script type="text/javascript">
   loadBooks();
+
+  newBookForm();
+
+  $('.genre').on('click', function () {
+    var genre = $(this).attr('id');
+    var books = [];
+    $('#books').empty();
+    $.get("/books.json", function (data) {
+      $.each(data.books, function (index, book) {
+        if (book.genre.name === genre) {
+          books.push(book);
+        }
+      });
+      updateBooksView(books);
+    })
+  })
 </script>

@@ -1,6 +1,12 @@
 class BooksController < ApplicationController
   def index
     @books = Book.all
+    @authors = Author.all
+    @genres = Genre.all
+    if logged_in?
+      @book = Book.new
+
+    end
     respond_to do |f|
       f.html { render :index }
       f.json { render json: @books }
@@ -20,7 +26,8 @@ class BooksController < ApplicationController
     if @book.valid?
       @book.save
       flash.notice = "Book addition successful!"
-      redirect_to book_path(@book)
+      #redirect_to book_path(@book)
+      render json: @book, status: 201
     else
       @authors = Author.all
       @genres = Genre.all
@@ -42,6 +49,7 @@ class BooksController < ApplicationController
     if logged_in?
       @review_by_current_user = current_user.reviews.where(book: @book).first
     end
+    @review = Review.new if !@review_by_current_user
 
     respond_to do |f|
       f.html { render :show }
