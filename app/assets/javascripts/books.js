@@ -1,21 +1,3 @@
-function updateBooksView(books) {
-  $.each(books, function (index, book) {
-    $('#books').append(
-      '<div class="book" id="' + book.id + '">' +
-      '<a href="/books/' + book.id + '">' + book.title + '</a>' +
-      ' (' + book.rating_avg + ')' +
-      ' by ' + '<a href="/authors/' + book.author.id + '">' + book.author.name +
-      '</div>'
-    );
-  });
-}
-
-function loadBooks() {
-  $.get("/books.json", function (data) {
-    updateBooksView(data.books);
-  })
-}
-
 function loadReviews(book) {
   $(".reviews").empty();
   if (book.reviews.length === 0) {
@@ -29,6 +11,18 @@ function loadReviews(book) {
       );
     });
   }
+}
+
+function updateBooksView(books) {
+  $.each(books, function (index, book) {
+    $('#books').append(
+      '<div class="book" id="' + book.id + '">' +
+      '<a href="/books/' + book.id + '">' + book.title + '</a>' +
+      ' (' + book.rating_avg + ')' +
+      ' by ' + '<a href="/authors/' + book.author.id + '">' + book.author.name +
+      '</div>'
+    );
+  });
 }
 
 function updateBookView(newId) {
@@ -45,19 +39,40 @@ function updateBookView(newId) {
   });
 }
 
+function loadBooks() {
+  $.get("/books.json", function (data) {
+    updateBooksView(data.books);
+  })
+}
+
+
 function genreFilter() {
+  var booksData;
+
   $('.genre').on('click', function () {
     var genre = $(this).attr('id');
     var books = [];
-    $('#books').empty();
-    $.get("/books.json", function (data) {
-      $.each(data.books, function (index, book) {
+    function doFilter() {
+      $.each(booksData, function (index, book) {
         if (book.genre.name === genre || genre === "*") {
           books.push(book);
+
         }
       });
       updateBooksView(books);
-    });
+    }
+
+    $('#books').empty();  // remove all books from the view
+
+    if (booksData) {  // only query the server if we don't already have the books JSON
+      doFilter();
+    } else {
+      $.get("/books.json", function (data) {
+        booksData = data.books;
+        doFilter();
+      });
+    }
+
   });
 }
 
@@ -67,8 +82,8 @@ function newBookForm() {
   });
 
   $('form').submit(function(event) {
-    //prevent form from submitting the default way
-    event.preventDefault();
+
+    event.preventDefault(); //prevent form from submitting the default way
 
     var values = $(this).serialize();
 
