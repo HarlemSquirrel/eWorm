@@ -1,16 +1,17 @@
 Rails.application.routes.draw do
-  resources :authors, only: [:index, :show]
-  resources :books
-  resources :genres, only: [:index, :show]
+  root 'application#angular'
+  #resources :authors, only: [:index, :show]
+  #resources :books
+  #resources :genres, only: [:index, :show]
 
-  resources :reviews, only: [:create, :edit, :update]
-  get '/books/:id/reviews/new', to: 'reviews#new'
+  #resources :reviews, only: [:create, :edit, :update]
+  #get '/books/:id/reviews/new', to: 'reviews#new'
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  resources :users, only: [:show]
+  #devise_for :users, :controllers => { :omniauth_callbacks => #"users/omniauth_callbacks" }
+  #resources :users, only: [:show]
 
-  root to: 'visitors#index'
-  get '/about', to: 'visitors#about'
+  #root to: 'visitors#index'
+  #get '/about', to: 'visitors#about'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
