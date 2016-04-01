@@ -11,10 +11,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def logged_in?
-    !!current_user
-  end
-
   def redirect_guests
     flash.alert = "You must be logged in to do this."
     redirect_to new_user_session_path

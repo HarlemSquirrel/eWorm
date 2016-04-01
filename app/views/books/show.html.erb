@@ -11,7 +11,7 @@
   <div class="reviewAction">
     <% if !!@review_by_current_user %>
       <%= button_to "Edit your review", edit_review_path(@review_by_current_user), method: :get %>
-    <% elsif logged_in? %>
+    <% elsif user_signed_in? %>
       <%= button_to "Review this book", "/books/#{@book.id}/reviews/new", method: :get %>
     <% end %>
   </div>

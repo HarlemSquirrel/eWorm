@@ -3,7 +3,7 @@ class BooksController < ApplicationController
     @books = Book.all
     @authors = Author.all
     @genres = Genre.all
-    if logged_in?
+    if user_signed_in?
       @book = Book.new
 
     end
@@ -14,7 +14,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    return redirect_guests unless logged_in?
+    return redirect_guests unless user_signed_in?
 
     @book = Book.create(
       title: book_params[:title],
@@ -36,7 +36,7 @@ class BooksController < ApplicationController
   end
 
   def new
-    return redirect_guests unless logged_in?
+    return redirect_guests unless user_signed_in?
 
     @book = Book.new
     @authors = Author.all
@@ -46,7 +46,7 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
 
-    if logged_in?
+    if user_signed_in?
       @review_by_current_user = current_user.reviews.where(book: @book).first
     end
     @review = Review.new if !@review_by_current_user

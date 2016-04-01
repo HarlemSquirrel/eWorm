@@ -1,13 +1,13 @@
 class ReviewsController < ApplicationController
   def new
-    return redirect_guests unless logged_in?
+    return redirect_guests unless user_signed_in?
 
     @review = Review.new
     @book = Book.find(params[:id])
   end
 
   def create
-    return redirect_guests unless logged_in?
+    return redirect_guests unless user_signed_in?
 
     @review = current_user.reviews.create(review_params)
     if @review.valid?
@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    return redirect_guests unless logged_in?
+    return redirect_guests unless user_signed_in?
 
     @review = Review.find(params[:id])
     @book = @review.book
@@ -32,7 +32,7 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    return redirect_guests unless logged_in?
+    return redirect_guests unless user_signed_in?
 
     @review = current_user.reviews.find(params[:id])
     @review.update(review_params)
