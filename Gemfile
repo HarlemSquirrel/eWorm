@@ -64,3 +64,4 @@ end
   # for AngularJS
   gem 'angular-rails-templates', '~> 1.0'
   gem 'bower-rails' # install bower with `sudo npm install -g bower`
+  # getting started video https://www.youtube.com/watch?v=kkTVhlu7Jg4&feature=youtu.be

@@ -10,13 +10,14 @@
   <header>
     <h3>eWorm</h3>
     <%# render '/layouts/navigation' %>
+    <%= render 'layouts/angular_nav' %>
   </header>
 
   <div class="main">
     <%# render '/layouts/messages' %>
 
     <%# yield %>
-    It's working so far!
+
     <div ui-view></div ui-view>
 
   </div>

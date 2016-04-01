@@ -1,14 +1,14 @@
 class BooksController < ApplicationController
   def index
     @books = Book.all
-    @authors = Author.all
-    @genres = Genre.all
-    if user_signed_in?
-      @book = Book.new
-
-    end
+    #@authors = Author.all
+    #@genres = Genre.all
+    #if user_signed_in?
+    #  @book = Book.new
+#
+    #end
     respond_to do |f|
-      f.html { render :index }
+
       f.json { render json: @books }
     end
   end
@@ -52,7 +52,7 @@ class BooksController < ApplicationController
     @review = Review.new if !@review_by_current_user
 
     respond_to do |f|
-      f.html { render :show }
+      #f.html { render :show }
       f.json { render json: @book }
     end
   end

@@ -13,6 +13,7 @@
 
 //= require angular
 //= require angular-ui-router
+//= require angular-sanitize
 
 //= require angular-rails-templates
 

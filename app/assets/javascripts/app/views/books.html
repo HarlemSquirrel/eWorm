@@ -1,0 +1,27 @@
+<h3>Books</h3>
+
+<div class="">
+  <ul class="books">
+		<li ng-repeat="book in books_ctrl.books">
+      {{ book.title }} by {{ book.author.name }}
+			<!-- <item id="book"></item> -->
+		</li>
+	</ul>
+
+	<div>
+		<ul class="pagination">
+			<li ng-if="books_ctl.page > 0">
+				<a href="" ng-click="books_ctl.previousPage()">
+					<< Previous
+				</a>
+			</li>
+			<li ng-if="books_ctl.page < books_ctl.totalPages - 1">
+				<a href="" ng-click="books_ctl.nextPage()">
+					Next >>
+				</a>
+			</li>
+		</ul>
+
+		<div style="clear: both;"></div>
+	</div>
+</div>

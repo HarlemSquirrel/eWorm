@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root 'application#angular'
+  resources :books, defaults: { format: 'json'}
+  #get '/books.json', to: 'books#index'
+
   #resources :authors, only: [:index, :show]
   #resources :books
   #resources :genres, only: [:index, :show]
