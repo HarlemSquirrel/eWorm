@@ -6,14 +6,17 @@ var BookSummary = {
 	controller: function (BooksService) {
 		var ctrl = this;
 
-		console.log('hey');
+		if (!!ctrl.id.title) { // check for existing book data
+			ctrl.data = ctrl.id;
+		} else { // get book data if not present
+			BooksService
+				.getBook(this.id)
+				.then(function (res) {
+					ctrl.data = res.data.book;
+					ctrl.reviewsCount = ctrl.data.reviews.length;
+				});
+		}
 
-		BooksService
-			.getBook(this.id)
-			.then(function (res) {
-				ctrl.data = res.data.book;
-        //debugger;
-			})
 	},
 	controllerAs: 'bookSummary'
 };

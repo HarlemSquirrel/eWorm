@@ -1,5 +1,8 @@
-<h3 class="book" ng-if="bookSummary.data">
-  <a ui-sref="book({id: book.id})">{{ bookSummary.data.title }}</a>
+<p class="book" ng-if="bookSummary.data">
+  <strong><em><a ui-sref="book({id: book.id})">{{ bookSummary.data.title }}</a></em></strong>
+
   (<a ui-sref="genre({id: book.genre.id})">{{ bookSummary.data.genre.name }}</a>)
+  <br>
    by <a ui-sref="author({id: book.author.id})">{{ bookSummary.data.author.name }}</a>
-</h3>
+   ({{bookSummary.data.rating_avg}}/5 from {{bookSummary.reviewsCount}} reviews)
+</p>
