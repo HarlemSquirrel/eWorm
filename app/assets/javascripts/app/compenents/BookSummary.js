@@ -1,5 +1,5 @@
-var Item = {
-	templateUrl: 'views/item.html',
+var BookSummary = {
+	templateUrl: 'app/views/book_summary.html',
 	bindings: {
 		id: '='
 	},
@@ -11,12 +11,13 @@ var Item = {
 		BooksService
 			.getBook(this.id)
 			.then(function (res) {
-				ctrl.data = res.data;
+				ctrl.data = res.data.book;
+        //debugger;
 			})
 	},
-	controllerAs: 'item'
+	controllerAs: 'bookSummary'
 };
 
 angular
 	.module('app')
-	.component('item', Item);
+	.component('bookSummary', BookSummary);

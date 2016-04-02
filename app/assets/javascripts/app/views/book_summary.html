@@ -1,0 +1,5 @@
+<h3 class="book" ng-if="bookSummary.data">
+  <a ui-sref="book({id: book.id})">{{ bookSummary.data.title }}</a>
+  (<a ui-sref="genre({id: book.genre.id})">{{ bookSummary.data.genre.name }}</a>)
+   by <a ui-sref="author({id: book.author.id})">{{ bookSummary.data.author.name }}</a>
+</h3>
