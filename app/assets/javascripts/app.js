@@ -18,7 +18,7 @@ angular
         }
       })
       .state('book', {
-				url: '/book/:id',
+				url: '/books/:id',
 				templateUrl: 'app/views/book.html',
         controller: 'BookController as book',
         resolve: {
