@@ -1,5 +1,5 @@
 function BookController(book) {
-	this.data = book.data;
+	this.data = book.data.book;
 }
 
 angular

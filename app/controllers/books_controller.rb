@@ -46,10 +46,10 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
 
-    if user_signed_in?
-      @review_by_current_user = current_user.reviews.where(book: @book).first
-    end
-    @review = Review.new if !@review_by_current_user
+    #if user_signed_in?
+    #  @review_by_current_user = current_user.reviews.where(book: @book).first
+    #end
+    #@review = Review.new if !@review_by_current_user
 
     respond_to do |f|
       #f.html { render :show }

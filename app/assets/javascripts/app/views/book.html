@@ -1,0 +1,17 @@
+<div class="book" ng-if="book.data">
+	<h2 class="book__title">
+		{{ book.data.title }}
+	</h2>
+	<a class="book__author" ui-sref="author({id: book.data.author.id})">
+		by {{ book.data.author.name }}
+	</a>
+  <a class="book__genre" ui-sref="genre({id: book.data.genre.id})">
+		{{ book.data.genre.name }}
+	</a>
+
+	<div class="reviews">
+		<div ng-repeat="review in book.data.reviews">
+			{{review.user.username}} said "{{review.content}}"
+		</div>
+	</div>
+</div>

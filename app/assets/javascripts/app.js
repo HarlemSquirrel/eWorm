@@ -16,6 +16,16 @@ angular
             return BooksService.getBooks();
           }
         }
-      });
+      })
+      .state('book', {
+				url: '/book/:id',
+				templateUrl: 'app/views/book.html',
+        controller: 'BookController as book',
+        resolve: {
+          book: function ($stateParams, BooksService) {
+            return BooksService.getBook($stateParams.id);
+          }
+        }
+			});
     $urlRouterProvider.otherwise('/')
   })

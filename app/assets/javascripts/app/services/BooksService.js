@@ -6,7 +6,7 @@ function BooksService($http) {
 	};
 
 	this.getBook = function (id) {
-		return $http.get(API_URL + '/book/' + id + '.json');
+		return $http.get(API_URL + '/books/' + id + '.json');
 	};
 }
 
