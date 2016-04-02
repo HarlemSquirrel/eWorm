@@ -1,6 +1,6 @@
 <p ng-if="bookSummary.data">
   <strong><em><a ui-sref="book({id: bookSummary.data.id})">{{ bookSummary.data.title }}</a></em></strong>
-
+  <br>
   (<a ui-sref="genre({id: book.genre.id})">{{ bookSummary.data.genre.name }}</a>)
   <br>
    by <a ui-sref="author({id: book.author.id})">{{ bookSummary.data.author.name }}</a>

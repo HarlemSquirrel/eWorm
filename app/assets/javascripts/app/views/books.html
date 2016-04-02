@@ -1,9 +1,13 @@
 <h2>Books</h2>
 
 <input ng-model="books_ctrl.search" placeholder="Search"/>
+Sort by:
+<a href="" ng-click="sorter='title'">Title</a> |
+<a href="" ng-click="sorter='author.name'">Author</a> |
+<a href="" ng-click="sorter='genre.name'">Genre</a>
 
 <div class="books">
-	<div class="book" ng-repeat="book in books_ctrl.filteredBooks">
+	<div class="book" ng-repeat="book in books_ctrl.filteredBooks | orderBy :sorter ">
 		<book-summary id="book"></book>
 	</div>
 </div>
