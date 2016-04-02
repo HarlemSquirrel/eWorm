@@ -1,4 +1,4 @@
-var BOOKS_PER_PAGE = 30;
+var BOOKS_PER_PAGE = 10;
 
 function BooksController(books) {
 	var ctrl = this;

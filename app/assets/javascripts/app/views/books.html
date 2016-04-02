@@ -10,18 +10,18 @@
 </div>
 
 	<div>
-		<ul class="pagination">
-			<li ng-if="books_ctl.page > 0">
-				<a href="" ng-click="books_ctl.previousPage()">
+		<div id="pagination" class="pagination">
+      <a href="" ng-click="books_ctrl.previousPage()">
+			  <div class="button" ng-if="books_ctrl.page > 0">
 					<< Previous
-				</a>
-			</li>
-			<li ng-if="books_ctl.page < books_ctl.totalPages - 1">
-				<a href="" ng-click="books_ctl.nextPage()">
-					Next >>
-				</a>
-			</li>
-		</ul>
+			  </div>
+      </a>
+      <a href="" ng-click="books_ctrl.nextPage()">
+  			<div class="button" ng-if="books_ctrl.page < books_ctrl.totalPages - 1">
+  				Next >>
+  			</div>
+      </a>
+		</div>
 
 		<div style="clear: both;"></div>
 	</div>

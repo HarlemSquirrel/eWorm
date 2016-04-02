@@ -1,0 +1,53 @@
+a:link, a:visited {
+  color: #e6ffe6;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+body {
+  /*min-width: 400px;
+  max-width: 1800px;*/
+  background-color: green;
+  color: white;
+  text-align: center;
+}
+
+header, footer, div {
+  margin: 5px auto;
+  padding: 20px;
+}
+
+header {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #e6ffe6;
+  position: fixed;
+  top: 0;
+}
+
+
+.main {
+  background-color: rgba(0, 0, 0, 0.3);
+  display: block;
+  margin-top :130px;
+}
+
+.reviews {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.welcome {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: block;
+}
+
+.field {
+  padding: 5px;
+}
+
+#books, .newBookForm {
+  display: inline-block;
+  vertical-align: top;
+}
