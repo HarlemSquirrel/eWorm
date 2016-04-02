@@ -1,7 +1,9 @@
 <h2>Books</h2>
 
+<input ng-model="books_ctrl.search" placeholder="Search"/>
+
 <div class="books">
-	<h3 ng-repeat="book in books_ctrl.books">
+	<h3 ng-repeat="book in books_ctrl.filteredBooks">
     <a ui-sref="book({id: book.id})">{{ book.title }}</a>
     (<a ui-sref="genre({id: book.genre.id})">{{ book.genre.name }}</a>)
      by <a ui-sref="author({id: book.author.id})">{{ book.author.name }}</a>
