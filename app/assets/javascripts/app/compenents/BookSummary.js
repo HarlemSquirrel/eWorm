@@ -13,10 +13,11 @@ var BookSummary = {
 				.getBook(this.id)
 				.then(function (res) {
 					ctrl.data = res.data.book;
-					ctrl.reviewsCount = ctrl.data.reviews.length;
+
 				});
 		}
-
+		
+		ctrl.reviewsCount = ctrl.data.reviews.length;
 	},
 	controllerAs: 'bookSummary'
 };

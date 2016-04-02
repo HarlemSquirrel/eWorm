@@ -2,6 +2,16 @@
   display: inline-block;
 }
 
+.book {
+  display: inline-block;
+  background-color: rgba(30, 30, 30, 0.5);
+  margin: 5px;
+  padding: 10px;
+  vertical-align: middle;
+  height: 120px;
+  width: 200px;
+}
+
 .button {
   background-color: rgba(30, 30, 30, 0.5);
   display: inline-block;

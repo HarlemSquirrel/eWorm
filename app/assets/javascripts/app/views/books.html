@@ -3,9 +3,9 @@
 <input ng-model="books_ctrl.search" placeholder="Search"/>
 
 <div class="books">
-	<p ng-repeat="book in books_ctrl.filteredBooks">
+	<div class="book" ng-repeat="book in books_ctrl.filteredBooks">
 		<book-summary id="book"></book>
-	</p>
+	</div>
 </div>
 
 	<div>
