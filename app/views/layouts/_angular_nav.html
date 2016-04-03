@@ -1,7 +1,9 @@
 <nav>
   <a ui-sref="home" ui-sref-active="active">Home</a>
   <a ui-sref="books" ui-sref-active="active">Books</a>
-  <a ng-if="Auth.isAuthenticated() == false" ui-sref="login" ui-sref-active="active">Log In</a>
-  <a href="" ng-click="logout()">Log Out</a>
-  <a ui-sref="signup" ui-sref-active="active">Sign Up</a>
+
+  <a ng-if="isLoggedIn == false" ui-sref="login" ui-sref-active="active">Log In</a>
+  <a ng-if="isLoggedIn == false" ui-sref="signup" ui-sref-active="active">Sign Up</a>
+
+  <a ng-if="isLoggedIn == true" href="" ng-click="logout()">Log Out</a>
 </nav>

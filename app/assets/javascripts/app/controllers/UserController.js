@@ -1,4 +1,4 @@
-function UserController($scope, $state, Auth, UserService) {
+function UserController($rootScope, $scope, $state, Auth, UserService) {
   var ctrl = this;
 
   //Auth.currentUser().then(function(user) {
@@ -24,6 +24,8 @@ function UserController($scope, $state, Auth, UserService) {
     var credentials = { email: this.email, password: this.password };
     //debugger;
     Auth.login(credentials, config).then(function(user) {
+      $rootScope.user = user.user;
+      $rootScope.isLoggedIn = true;
       //debugger;
       //console.log(user); // => {id: 1, ect: '...'}
     }, function(error) {
@@ -46,6 +48,8 @@ function UserController($scope, $state, Auth, UserService) {
  $scope.callLogout = function () {
    //debugger;
    UserService.logout();
+   $rootScope.user = '';
+   $rootScope.isLoggedIn = false;
  }
 
 

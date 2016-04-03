@@ -1,4 +1,8 @@
-function WelcomeController() {
+function WelcomeController($scope, UserService) {
+  $scope.callIsLoggedIn = function () {
+    debugger;
+    return UserService.isLoggedIn();
+  }
   this.message = "hello world";
 }
 
