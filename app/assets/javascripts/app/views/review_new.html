@@ -1,0 +1,20 @@
+<h3>Write a Review</h3>
+
+<form class="form" action="index.html" method="post">
+  <label for="rating">Rating</label>
+  <select name="rating">
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+  </select>
+  <br>
+  <textarea name="content" rows="8" cols="40"
+    placeholder="Write your review here..."
+    required="true"
+    minlength="10"
+  ></textarea>
+  <br>
+  <button  ng-click="">Create Review</button>
+</form>

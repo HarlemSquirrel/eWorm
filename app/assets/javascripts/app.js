@@ -42,6 +42,16 @@ angular
           }
         }
 			})
+      .state('book.review-new', {
+				url: '/review-new',
+				templateUrl: 'app/views/review_new.html',
+        controller: 'ReviewsController as reviews_ctrl',
+        resolve: {
+          book: function ($stateParams, BooksService) {
+            return BooksService.getBook($stateParams.id);
+          }
+        }
+			})
 
     $urlRouterProvider.otherwise('/')
   })
