@@ -41,6 +41,13 @@ angular
             return BooksService.getBook($stateParams.id);
           }
         }
-			});
+			})
+
     $urlRouterProvider.otherwise('/')
   })
+  .run(function ($rootScope, Auth) {
+    $rootScope.$on('$stateChangeStart', function (event) {
+      console.log('run!');
+      $rootScope.isLoggedIn = Auth.isAuthenticated();
+    });
+  });

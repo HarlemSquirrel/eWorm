@@ -16,22 +16,7 @@ function UserController($rootScope, $scope, $state, Auth, UserService) {
 
 
   ctrl.login = function () {
-    var config = {
-      headers: {
-        'X-HTTP-Method-Override': 'POST'
-      }
-    };
-    var credentials = { email: this.email, password: this.password };
-    //debugger;
-    Auth.login(credentials, config).then(function(user) {
-      $rootScope.user = user.user;
-      $rootScope.isLoggedIn = true;
-      //debugger;
-      //console.log(user); // => {id: 1, ect: '...'}
-    }, function(error) {
-      // Authentication failed...
-      //debugger;
-    });
+    UserService.login(this.email, this.password)
   }
 
   ctrl.signup = function () {
@@ -48,8 +33,8 @@ function UserController($rootScope, $scope, $state, Auth, UserService) {
  $scope.callLogout = function () {
    //debugger;
    UserService.logout();
-   $rootScope.user = '';
-   $rootScope.isLoggedIn = false;
+   //$rootScope.user = '';
+   //$rootScope.isLoggedIn = false;
  }
 
 
