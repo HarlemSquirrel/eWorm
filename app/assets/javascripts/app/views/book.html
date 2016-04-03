@@ -1,9 +1,14 @@
 
 
 <div class="book_full" ng-if="book.data">
-	<a ui-sref="book.review-new">
+	<a ui-sref="book.review-new" ng-if="isLoggedIn()">
 		<div class="button">
 			Review this book
+		</div>
+	</a>
+	<a ui-sref="login" ng-if="isLoggedIn() == false">
+		<div class="button">
+			Log in to review this book
 		</div>
 	</a>
 
@@ -23,11 +28,12 @@
 		<div ng-repeat="review in book.data.reviews">
 			{{review.user.username}} said "{{review.content}}"
 		</div>
+		<h3 ng-if="book.data.reviews.length === 0">No reviews...yet</h3>
 	</div>
 </div>
 
 <a ui-sref="books">
   <div class="button">
-    Browse all Books
+    Browse all books
   </div>
 </a>

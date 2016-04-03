@@ -1,5 +1,7 @@
 function UserService(Auth, $state) {
-  this.isLoggedIn = Auth.isAuthenticated();
+  this.isLoggedIn = function () {
+    return Auth.isAuthenticated();
+  }
 
   this.login = function (email, password) {
     var config = {
@@ -32,6 +34,10 @@ function UserService(Auth, $state) {
      console.log('An error occurred logging out!');
     });
   };
+
+  this.currentUser = function () {
+
+  }
 }
 
 angular

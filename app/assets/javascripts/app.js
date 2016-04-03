@@ -57,7 +57,8 @@ angular
   })
   .run(function ($rootScope, Auth, UserService) {
     $rootScope.$on('$stateChangeSuccess', function($state, evt, to, params) {
-      $rootScope.isLoggedIn = Auth.isAuthenticated();
+      $rootScope.isLoggedIn = UserService.isLoggedIn;
+      //debugger;
       if ($rootScope.isLoggedIn) {
         Auth.currentUser().then(function(response) {
           $rootScope.currentUser = response.user;

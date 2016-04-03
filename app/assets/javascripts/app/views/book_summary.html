@@ -5,5 +5,5 @@
   <br>
    by <a ui-sref="author({id: book.author.id})">{{ bookSummary.data.author.name }}</a>
    <br>
-   ({{bookSummary.data.rating_avg}} from {{bookSummary.reviewsCount}} reviews)
+   ({{bookSummary.data.rating_avg}} <span ng-if="bookSummary.reviewsCount > 0">from {{bookSummary.reviewsCount}} reviews</span>)
 </p>

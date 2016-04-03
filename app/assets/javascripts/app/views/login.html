@@ -1,10 +1,10 @@
 
-<p ng-if="isLoggedIn">
+<p ng-if="isLoggedIn()">
   You are already logged in, {{currentUser.username}}!
   <a href="" ng-click="logOut()">Log Out</a>
 </p>
 
-<div class="login" ng-if="isLoggedIn == false">
+<div class="login" ng-if="isLoggedIn() == false">
   <h3>Log In</h3>
   <form  class="form" action="" method="">
     <input
