@@ -5,5 +5,5 @@
   <a ng-if="isLoggedIn == false" ui-sref="login" ui-sref-active="active">Log In</a>
   <a ng-if="isLoggedIn == false" ui-sref="signup" ui-sref-active="active">Sign Up</a>
 
-  <a ng-if="isLoggedIn == true" href="" ng-click="logout()">Log Out</a>
+  <a ng-if="isLoggedIn == true" href="" ng-click="logout()">Log out, {{currentUser.username}}</a>
 </nav>

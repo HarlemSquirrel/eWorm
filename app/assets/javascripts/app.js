@@ -46,7 +46,14 @@ angular
     $urlRouterProvider.otherwise('/')
   })
   .run(function ($rootScope, Auth) {
-    $rootScope.$on('$stateChangeStart', function (event) {
+    $rootScope.$on('$stateChangeSuccess', function() {
       $rootScope.isLoggedIn = Auth.isAuthenticated();
-    });
+      Auth.currentUser().then(function(response) {
+        $rootScope.currentUser = response.user;
+        //debugger;
+        }, function(error) {
+          console.log(error);
+            // unauthenticated error
+        });
+    })
   });
