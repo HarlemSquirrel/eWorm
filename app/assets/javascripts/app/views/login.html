@@ -1,0 +1,19 @@
+<h3>Log In</h3>
+<form class="" action="" method="">
+  <input
+        name="email"
+        placeholder="email"
+        autofocus
+        type="email"
+        required="required"
+        ng-model="user_ctrl.email" />
+    <input
+        name="password"
+        type="password"
+        placeholder="password"
+        required="required"
+        ng-model="user_ctrl.password" />
+    <button  ng-click="user_ctrl.login()">Log In</button>
+</form>
+
+<a href="" ng-click="callLogout()">Log Out</a>

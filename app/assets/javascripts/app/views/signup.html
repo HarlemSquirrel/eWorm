@@ -1,0 +1,31 @@
+<h2>Sign up</h2>
+
+<form class="" action="" method="">
+  <input
+    name="username"
+    placeholder="create a username"
+    autofocus
+    type="text"
+    required="required"
+    ng-model="user_ctrl.username" />
+  <input
+    name="email"
+    placeholder="email"
+    type="email"
+    required="required"
+    ng-model="user_ctrl.email" />
+  <input
+    name="password"
+    type="password"
+    placeholder="password"
+    required="required"
+    ng-model="user_ctrl.password" />
+  <input
+    name="password_confirmation"
+    type="password"
+    placeholder="confirm password"
+    required="required"
+    ng-model="user_ctrl.password_confirmation" />
+
+    <button  ng-click="user_ctrl.signup()">Signup</button>
+</form>

@@ -65,3 +65,10 @@ end
   gem 'angular-rails-templates', '~> 1.0'
   gem 'bower-rails' # install bower with `sudo npm install -g bower`
   # getting started video https://www.youtube.com/watch?v=kkTVhlu7Jg4&feature=youtu.be
+
+  ### AngularDevise
+  # bower install --save angular-devise
+  # https://github.com/cloudspace/angular_devise
+  source "https://rails-assets.org" do
+    gem "rails-assets-angular-devise"
+  end

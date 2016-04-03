@@ -37,8 +37,8 @@ end
 
 User.create(
   username: "the_tester",
-  email: "test@test.com",
-  password:"yeswecan"
+  email: "test@test.net",
+  password:"testwecan"
 )
 
 45.times do
