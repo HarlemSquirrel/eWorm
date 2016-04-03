@@ -36,7 +36,7 @@ function UserService(Auth, $state) {
   };
 
   this.currentUser = function () {
-
+    // to do
   }
 }
 
