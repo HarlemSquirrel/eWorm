@@ -47,7 +47,6 @@ angular
   })
   .run(function ($rootScope, Auth) {
     $rootScope.$on('$stateChangeStart', function (event) {
-      console.log('run!');
       $rootScope.isLoggedIn = Auth.isAuthenticated();
     });
   });

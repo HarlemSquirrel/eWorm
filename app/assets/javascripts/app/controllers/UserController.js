@@ -1,20 +1,6 @@
 function UserController($rootScope, $scope, $state, Auth, UserService) {
   var ctrl = this;
 
-  //Auth.currentUser().then(function(user) {
-    // User was logged in, or Devise returned
-    // previously authenticated session.
-  //  console.log(user); // => {id: 1, ect: '...'}
-  //}, function(error) {
-    // unauthenticated error
-  //});
-
-  //var credentials = {
-  //  email: 'test@test.net',
-  //  password: 'testwecan'
-  //};
-
-
   ctrl.login = function () {
     UserService.login(this.email, this.password)
   }
@@ -33,8 +19,6 @@ function UserController($rootScope, $scope, $state, Auth, UserService) {
  $scope.callLogout = function () {
    //debugger;
    UserService.logout();
-   //$rootScope.user = '';
-   //$rootScope.isLoggedIn = false;
  }
 
 
