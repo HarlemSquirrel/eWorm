@@ -45,15 +45,22 @@ angular
 
     $urlRouterProvider.otherwise('/')
   })
-  .run(function ($rootScope, Auth) {
-    $rootScope.$on('$stateChangeSuccess', function() {
+  .run(function ($rootScope, Auth, UserService) {
+    $rootScope.$on('$stateChangeSuccess', function($state, evt, to, params) {
       $rootScope.isLoggedIn = Auth.isAuthenticated();
-      Auth.currentUser().then(function(response) {
-        $rootScope.currentUser = response.user;
-        //debugger;
-        }, function(error) {
-          console.log(error);
-            // unauthenticated error
-        });
+      if ($rootScope.isLoggedIn) {
+        Auth.currentUser().then(function(response) {
+          $rootScope.currentUser = response.user;
+          //debugger;
+          }, function(error) {
+            console.log(error);
+              // unauthenticated error
+          });
+        $rootScope.logOut = function () {
+          UserService.logout();
+        }
+
+      }
+
     })
   });

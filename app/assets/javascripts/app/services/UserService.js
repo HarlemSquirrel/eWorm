@@ -1,6 +1,4 @@
-//var API_URL = '';
-
-function UserService(Auth) {
+function UserService(Auth, $state) {
   this.isLoggedIn = Auth.isAuthenticated();
 
   this.login = function (email, password) {
@@ -9,29 +7,29 @@ function UserService(Auth) {
         'X-HTTP-Method-Override': 'POST'
       }
     };
-    var credentials = { email: email, password: password };
-    //debugger;
-    Auth.login(credentials, config).then(function(user) {
 
-      console.log(user + 'logged in!');
+    var credentials = { email: email, password: password };
+
+    Auth.login(credentials, config).then(function(res) {
+      console.log(res.user.username + ' logged in.');
     }, function(error) {
       // Authentication failed...
-      //debugger;
+      console.log('An error occurred logging in!');
     });
   }
 
   this.logout = function () {
-    //debugger;
     var config = {
        headers: {
          'X-HTTP-Method-Override': 'DELETE'
        }
      };
-    Auth.logout(config).then(function(oldUser) {
-      console.log(user + 'logged out!');
-     alert("You are logged out!");
+
+    Auth.logout(config).then(function(res) {
+      console.log(res.user.username + ' logged out.');
+      $state.go('home', {}, {reload: true});
     }, function(error) {
-     // An error occurred logging out.
+     console.log('An error occurred logging out!');
     });
   };
 }
