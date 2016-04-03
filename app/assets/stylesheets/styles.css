@@ -21,17 +21,25 @@ header, footer, div {
 }
 
 header {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.8);
   color: #e6ffe6;
+  margin: 0;
   position: fixed;
   top: 0;
+  height: 20px;
+  width: 100%;
+}
+
+header h3, header nav {
+  margin: 5px;
+  display: inline-block;
 }
 
 
 .main {
   background-color: rgba(0, 0, 0, 0.3);
   display: block;
-  margin-top :10px;
+  margin-top :70px;
 }
 
 .reviews {

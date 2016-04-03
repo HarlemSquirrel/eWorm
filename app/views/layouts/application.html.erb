@@ -8,17 +8,17 @@
 </head>
 <body ng-app='app'>
   <header>
-    <h3>eWorm</h3>
+    <h3><%= link_to 'eWorm', root_url %></h3>
     <%# render '/layouts/navigation' %>
     <%= render 'layouts/angular_nav' %>
   </header>
 
-  <div id="main" class="main">
+  <div id="main" class="main" ui-view>
     <%# render '/layouts/messages' %>
 
     <%# yield %>
 
-    <div ui-view></div ui-view>
+    
 
   </div>
 
