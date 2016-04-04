@@ -6,20 +6,34 @@
 
 <div class="login" ng-if="isLoggedIn() == false">
   <h3>Log In</h3>
-  <form  class="form" action="" method="">
+
+  <div class="errors" ng-messages="form.email.$error" ng-if="form.email.$touched">
+    <div ng-message="required">Email is required!</div>
+    <div ng-message="email">Email must be a valid email!</div>
+  </div>
+  <div class="errors" ng-messages="form.password.$error" ng-if="form.password.$touched">
+    <div ng-message="required">Password is required!</div>
+    <div ng-message="minlength">Password must at least 8 characters!</div>
+  </div>
+
+  <form name="form" class="form">
     <input
-          name="email"
-          placeholder="email"
-          autofocus
-          type="email"
-          required="required"
-          ng-model="user_ctrl.email" />
-      <input
-          name="password"
-          type="password"
-          placeholder="password"
-          required="required"
-          ng-model="user_ctrl.password" />
-      <button  ng-click="user_ctrl.login()">Log In</button>
+      name="email"
+      placeholder="email"
+      autofocus
+      type="email"
+      required="required"
+      ng-model="user_ctrl.email"
+    >
+    <input
+      name="password"
+      type="password"
+      placeholder="password"
+      required="required"
+      minlength="8"
+      maxlength="72"
+      ng-model="user_ctrl.password"
+    >
+    <button  ng-click="user_ctrl.login()">Log In</button>
   </form>
 </div>

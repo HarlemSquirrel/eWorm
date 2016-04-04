@@ -1,7 +1,23 @@
 <div class="" ng-if="isLoggedIn() == false">
   <h2>Sign up</h2>
 
-  <form class="" action="" method="">
+  <form name="form">
+    <div class="errors" ng-messages="form.username.$error" ng-if="form.username.$touched">
+      <div ng-message="required">Username is required!</div>
+    </div>
+    <div class="errors" ng-messages="form.email.$error" ng-if="form.email.$touched">
+      <div ng-message="required">Email is required!</div>
+      <div ng-message="email">Email must be a valid email!</div>
+    </div>
+    <div class="errors" ng-messages="form.password.$error" ng-if="form.password.$touched">
+      <div ng-message="required">Password is required!</div>
+      <div ng-message="minlength">Password must at least 8 characters!</div>
+    </div>
+    <div class="errors" ng-messages="form.password_confirmation.$error" ng-if="form.password_confirmation.$touched">
+      <div ng-message="required">Password confirmation is required!</div>
+      <div ng-message="minlength">Password confirmation must at least 8 characters!</div>
+    </div>
+
     <input
       name="username"
       placeholder="create a username"
@@ -20,12 +36,14 @@
       type="password"
       placeholder="password"
       required="required"
+      minlength="8" maxlength="72"
       ng-model="user_ctrl.password" />
     <input
       name="password_confirmation"
       type="password"
       placeholder="confirm password"
       required="required"
+      minlength="8" maxlength="72"
       ng-model="user_ctrl.password_confirmation" />
 
       <button  ng-click="user_ctrl.signup()">Signup</button>

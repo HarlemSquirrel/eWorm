@@ -1,5 +1,5 @@
 angular
-  .module('app', ['ui.router', 'ngSanitize', 'templates', 'Devise'])
+  .module('app', ['ui.router', 'ngSanitize', 'templates', 'Devise', 'ngMessages'])
   .config(function ($stateProvider, $urlRouterProvider, AuthProvider) {
     $stateProvider
       .state('home', {
