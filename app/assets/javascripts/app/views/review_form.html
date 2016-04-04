@@ -3,12 +3,11 @@
 
   <form class="form" action="" method="">
     <label for="rating">Rating</label>
-    <select name="rating" ng-model="reviews_ctrl.rating" required="">
-      <option value="5">5</option>
-      <option value="4">4</option>
-      <option value="3">3</option>
-      <option value="2">2</option>
-      <option value="1">1</option>
+    <select name="rating"
+    ng-model="reviews_ctrl.rating"
+    ng-options="rating as rating for rating in [1,2,3,4,5]"
+    required="">
+
     </select>
     <br>
     <textarea name="content" rows="8" cols="40"
