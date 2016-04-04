@@ -9,12 +9,13 @@ function BooksController(books, $filter, $scope) {
 
 	$scope.$watch('books_ctrl.search', function (val) {
 		ctrl.filteredBooks = $filter('filter')(books.data.books, val);
+		ctrl.paginateBooks()
 	});
 
 
 
 	ctrl.paginateBooks = function () {
-		ctrl.filteredBooks = ctrl.filteredBooks.slice(ctrl.page * BOOKS_PER_PAGE, (ctrl.page + 1) * BOOKS_PER_PAGE);
+		ctrl.paginatedBooks = ctrl.filteredBooks.slice(ctrl.page * BOOKS_PER_PAGE, (ctrl.page + 1) * BOOKS_PER_PAGE);
 		//ctrl.books = books.data.books.slice(ctrl.page * BOOKS_PER_PAGE, (ctrl.page + 1) * BOOKS_PER_PAGE);
 	};
 

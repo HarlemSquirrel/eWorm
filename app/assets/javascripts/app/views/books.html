@@ -7,7 +7,7 @@ Sort by:
 <a href="" ng-click="sorter='genre.name'">Genre</a>
 
 <div class="books">
-	<div class="book" ng-repeat="book in books_ctrl.filteredBooks | orderBy :sorter ">
+	<div class="book" ng-repeat="book in books_ctrl.paginatedBooks | orderBy :sorter ">
 		<book-summary id="book"></book>
 	</div>
 </div>
