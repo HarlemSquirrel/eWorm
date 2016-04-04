@@ -4,7 +4,6 @@ function ReviewsController($rootScope, $scope, $state, book, ReviewsService) {
   ctrl.type = 'new';
   ctrl.book.reviews.forEach(function (review) {
 		if (review.user.id == $rootScope.currentUser.id) {
-			//debugger;
 			ctrl.type =  'edit';
       ctrl.id = review.id;
       ctrl.rating = review.rating;
@@ -23,7 +22,6 @@ function ReviewsController($rootScope, $scope, $state, book, ReviewsService) {
     var data = { book_id: ctrl.book.id, rating: ctrl.rating, content: ctrl.content  }
     ReviewsService.patchReview(ctrl.id, data);
     $state.go("book", {id: ctrl.book.id}, {reload: true});
-    //debugger;
   }
 }
 

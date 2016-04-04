@@ -16,7 +16,6 @@ function BooksController(books, $filter, $scope) {
 
 	ctrl.paginateBooks = function () {
 		ctrl.paginatedBooks = ctrl.filteredBooks.slice(ctrl.page * BOOKS_PER_PAGE, (ctrl.page + 1) * BOOKS_PER_PAGE);
-		//ctrl.books = books.data.books.slice(ctrl.page * BOOKS_PER_PAGE, (ctrl.page + 1) * BOOKS_PER_PAGE);
 	};
 
 	ctrl.nextPage = function () {
@@ -28,8 +27,6 @@ function BooksController(books, $filter, $scope) {
 		ctrl.page--;
 		ctrl.paginateBooks();
 	};
-
-	//ctrl.paginateBooks();
 }
 
 angular

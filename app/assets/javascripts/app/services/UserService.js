@@ -3,14 +3,26 @@ function UserService(Auth, $state) {
     return Auth.isAuthenticated();
   }
 
-  this.login = function (email, password) {
+  this.signup = function (credentials) {
     var config = {
       headers: {
         'X-HTTP-Method-Override': 'POST'
       }
     };
 
-    var credentials = { email: email, password: password };
+    Auth.register(credentials, config).then(function(registeredUser) {
+      console.log(registeredUser); // => {id: 1, ect: '...'}
+    }, function(error) {
+      console.log('error registering user');
+    });
+  }
+
+  this.login = function (credentials) {
+    var config = {
+      headers: {
+        'X-HTTP-Method-Override': 'POST'
+      }
+    };
 
     Auth.login(credentials, config).then(function(res) {
       console.log(res.user.username + ' logged in.');
@@ -34,10 +46,6 @@ function UserService(Auth, $state) {
      console.log('An error occurred logging out!');
     });
   };
-
-  this.currentUser = function () {
-    // to do
-  }
 }
 
 angular

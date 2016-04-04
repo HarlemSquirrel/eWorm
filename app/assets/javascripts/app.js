@@ -88,15 +88,11 @@ angular
   .run(function ($rootScope, Auth, UserService) {
     $rootScope.$on('$stateChangeSuccess', function($state, evt, to, params) {
       $rootScope.isLoggedIn = UserService.isLoggedIn;
-      //debugger;
       if ($rootScope.isLoggedIn()) {
-        //debugger;
         Auth.currentUser().then(function(response) {
           $rootScope.currentUser = response.user;
-          //debugger;
           }, function(error) {
             console.log(error);
-              // unauthenticated error
           });
         $rootScope.logOut = function () {
           UserService.logout();
