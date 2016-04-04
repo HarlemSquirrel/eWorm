@@ -18,7 +18,7 @@ end
   )
 end
 
-25.times do
+28.times do
   Book.create(
     title: Faker::Book.title,
     author: Author.all[rand(Author.all.count)],

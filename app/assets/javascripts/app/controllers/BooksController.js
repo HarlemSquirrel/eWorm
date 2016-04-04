@@ -1,4 +1,4 @@
-var BOOKS_PER_PAGE = 20;
+var BOOKS_PER_PAGE = 12;
 
 function BooksController(books, $filter, $scope) {
 	var ctrl = this;
