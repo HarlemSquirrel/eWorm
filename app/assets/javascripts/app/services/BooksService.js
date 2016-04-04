@@ -1,6 +1,6 @@
-var API_URL = '';
-
 function BooksService($http) {
+	var API_URL = '';
+	
 	this.getBooks = function () {
 		return $http.get(API_URL + '/books.json');
 	};

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'application#angular'
+  resources :authors, only: [:index, :show], defaults: { format: 'json' }
   resources :books, defaults: { format: 'json' }
+  resources :genres, only: [:index, :show], defaults: { format: 'json' }
   resources :reviews, only: [:create, :edit, :update], defaults: { format: 'json' }
   devise_for :users #, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   #get '/books.json', to: 'books#index'

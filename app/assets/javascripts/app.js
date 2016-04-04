@@ -42,6 +42,26 @@ angular
           }
         }
 			})
+      .state('author', {
+				url: '/authors/:id',
+				templateUrl: 'app/views/author.html',
+        controller: 'AuthorController as author_ctrl',
+        resolve: {
+          author: function ($stateParams, AuthorsService) {
+            return AuthorsService.getAuthor($stateParams.id);
+          }
+        }
+			})
+      .state('genre', {
+				url: '/genres/:id',
+				templateUrl: 'app/views/genre.html',
+        controller: 'GenreController as genre_ctrl',
+        resolve: {
+          genre: function ($stateParams, GenresService) {
+            return GenresService.getGenre($stateParams.id);
+          }
+        }
+			})
       .state('book.review-new', {
 				url: '/reviews/new',
 				templateUrl: 'app/views/review_form.html',
