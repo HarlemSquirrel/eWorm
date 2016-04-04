@@ -97,8 +97,6 @@ angular
         $rootScope.logOut = function () {
           UserService.logout();
         }
-
       }
-
     })
   });

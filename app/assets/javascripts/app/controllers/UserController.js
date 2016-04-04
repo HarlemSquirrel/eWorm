@@ -9,11 +9,6 @@ function UserController($rootScope, $scope, $state, Auth, UserService) {
   ctrl.signup = function () {
     var credentials = { username: this.username, email: this.email, password: this.password, password_confirmation: this.password_confirmation };
     UserService.signup(credentials)
-    //Auth.register(credentials, config).then(function(registeredUser) {
-    //  console.log(registeredUser); // => {id: 1, ect: '...'}
-    //}, function(error) {
-    //  console.log('error registering user');
-    //});
   }
 
  $scope.callLogout = function () {
