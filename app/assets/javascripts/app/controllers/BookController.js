@@ -3,9 +3,9 @@ function BookController(book, $rootScope) {
 	ctrl.data = book.data.book;
 	ctrl.reviewByCurrentUser =  false;
 	ctrl.data.reviews.forEach(function (review) {
-		if (review.user.id == $rootScope.currentUser.id) {
+		if (review.user && review.user.id == $rootScope.currentUser.id) {
 			//debugger;
-			ctrl.reviewByCurrentUser =  true;
+			ctrl.reviewByCurrentUser =  review;
 		}
 	});
 

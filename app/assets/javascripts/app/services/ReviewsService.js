@@ -8,6 +8,10 @@ function ReviewsService($http) {
 	this.patchReview = function (id, data) {
 		return $http.patch(API_URL + '/reviews/' + id + '.json', data);
 	};
+
+	this.getReview = function (id) {
+		return $http.get(API_URL + '/reviews/' + id + '.json');
+	}
 }
 
 angular
