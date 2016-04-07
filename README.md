@@ -9,6 +9,18 @@ You can get up and running by first cloning this repo.
 ```
 git clone https://github.com/HarlemSquirrel/eWorm.git
 ```
-Then take a look at the branches with `git branch -a` and then switch to a branch with `git checkout <branch-name>` The master branch has the first web app I built with rails running everything. The `jQuery-and-JSON` branch has some resources loading with JQuery talking to Rails via JSON get/post requests. The `angular-single-page-app` branch has more enhancements with everything running on a single page. Angular is really powerful and you can see what I've learned to implement. 
+Then take a look at the branches with `git branch -a` and then switch to a branch with `git checkout <branch-name>` The master branch has the first web app I built with rails running everything. The `jQuery-and-JSON` branch has some resources loading with JQuery talking to Rails via JSON get/post requests. The `angular-single-page-app` branch has more enhancements with everything running on a single page. Angular is really powerful and you can see what I've learned to implement.
+
+Next, you'll need to install the gems
+```
+bundle install
+```
+
+You can then get the server up and running.
+```
+rails s
+```
+
+And finally visit http://localhost:3000 to take her for a spin!
 
 [learn-co]: http://learn.co
