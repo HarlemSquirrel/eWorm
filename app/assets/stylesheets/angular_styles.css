@@ -16,6 +16,11 @@ a:link.active, a:visited.active{
   width: 200px;
 }
 
+.book__title {
+  font-weight: bold;
+  font-style: italic;
+}
+
 .button {
   background-color: rgba(30, 30, 30, 0.5);
   display: inline-block;

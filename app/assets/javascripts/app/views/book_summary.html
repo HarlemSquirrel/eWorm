@@ -1,5 +1,5 @@
 <p ng-if="bookSummary.data">
-  <strong><em><a ui-sref="book({id: bookSummary.data.id})">{{ bookSummary.data.title }}</a></em></strong>
+  <a class="book__title" ui-sref="book({id: bookSummary.data.id})">{{ bookSummary.data.title }}</a>
   <br>
   (<a ui-sref="genre({id: bookSummary.data.genre.id})">{{ bookSummary.data.genre.name }}</a>)
   <br>
