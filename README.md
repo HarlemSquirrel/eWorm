@@ -1,7 +1,6 @@
 # eWorm
-A book rating app on rails
+A book rating app on rails.
 
-# About
 This was created for a series of projects for the Full Stack Web Development track at [Learn Verified][learn-co].
 
 # Taking a Test Drive
@@ -22,7 +21,7 @@ rails s
 ```
 
 # Tests
-There are some tests for the models and controllers that you can run. The controller tests are not helpful with the angular front-end, and so I have commented out most of them on that branch. 
+There are some tests for the models and controllers that you can run. The controller tests are not helpful with the angular front-end, and so I have commented out most of them on that branch.
 ```
 $ rspec
 ...........................................
