@@ -1,6 +1,9 @@
 require 'rails_helper'
 
+# These tests are not valid with angular front-end
+=begin
 RSpec.describe BooksController, type: :controller do
+
   describe 'GET index' do
     it 'renders the index template' do
       get :index
@@ -60,3 +63,4 @@ RSpec.describe BooksController, type: :controller do
     end
   end
 end
+=end
