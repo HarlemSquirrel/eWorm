@@ -21,6 +21,16 @@ You can then get the server up and running.
 rails s
 ```
 
+# Tests
+There are some tests for the models and controllers that you can run. The controller tests are not helpful with the angular front-end, and so I have commented out most of them on that branch. 
+```
+$ rspec
+...........................................
+
+Finished in 0.85603 seconds (files took 1.92 seconds to load)
+43 examples, 0 failures
+```
+
 And finally visit http://localhost:3000 to take her for a spin!
 
 [learn-co]: http://learn.co
