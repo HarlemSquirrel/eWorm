@@ -86,17 +86,17 @@ angular
     $urlRouterProvider.otherwise('/')
   })
   .run(function ($rootScope, Auth, UserService) {
-    $rootScope.$on('$stateChangeSuccess', function($state, evt, to, params) {
-      $rootScope.isLoggedIn = UserService.isLoggedIn;
-      if ($rootScope.isLoggedIn()) {
-        Auth.currentUser().then(function(response) {
-          $rootScope.currentUser = response.user;
-          }, function(error) {
-            console.log(error);
-          });
-        $rootScope.logOut = function () {
-          UserService.logout();
-        }
+    $rootScope.$on('$stateChangeStart', function($state, evt, to, params) {
+      Auth.currentUser().then(function(response) {
+        $rootScope.currentUser = response.user;
+
+        }, function(error) {
+          console.log(error);
+        });
+      $rootScope.logOut = function () {
+        UserService.logout();
       }
+
+      $rootScope.isLoggedIn = UserService.isLoggedIn;
     })
   });
