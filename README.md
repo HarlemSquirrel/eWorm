@@ -14,6 +14,21 @@ Next, you'll need to install the gems. Remember, if you switch branches you will
 ```
 bundle install
 ```
+If you're trying out the one-page Angular app, you'll need [Bower](https://github.com/bower/bower) which can be installed with [NPM](https://github.com/npm/npm).
+```
+sudo npm install -g bower
+bower install
+```
+
+To get the database up and running...
+```
+rake db:create db:migrate
+```
+
+You can get some fake data and a user account test@test.net with password 'testwecan' by running...
+```
+rake db:seed
+```
 
 You can then get the server up and running.
 ```
