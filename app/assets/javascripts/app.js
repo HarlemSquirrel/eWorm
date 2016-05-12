@@ -87,8 +87,8 @@ angular
   }])
   .run(['$rootScope', 'Auth', 'UserService', function ($rootScope, Auth, UserService) {
     $rootScope.$on('$stateChangeStart', function() {
-      Auth.currentUser().then(function(r) {
-        $rootScope.currentUser = r.user;
+      Auth.currentUser().then(function(response) {
+        $rootScope.currentUser = response.user;
 
         }, function(error) {
           console.log(error);
