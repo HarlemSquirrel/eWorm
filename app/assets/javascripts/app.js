@@ -86,9 +86,9 @@ angular
     $urlRouterProvider.otherwise('')
   }])
   .run(['$rootScope', 'Auth', 'UserService', function ($rootScope, Auth, UserService) {
-    $rootScope.$on('$stateChangeStart', function($state, evt, to, params) {
-      Auth.currentUser().then(function(response) {
-        $rootScope.currentUser = response.user;
+    $rootScope.$on('$stateChangeStart', function() {
+      Auth.currentUser().then(function(r) {
+        $rootScope.currentUser = r.user;
 
         }, function(error) {
           console.log(error);
