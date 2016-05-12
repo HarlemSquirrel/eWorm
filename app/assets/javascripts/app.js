@@ -32,10 +32,43 @@ angular
           }]
         }
       })
+      .state('new_book', {
+        url: 'books/new',
+        templateUrl: 'app/views/new_book.html',
+        controller: 'NewBookController as ctrl',
+        resolve: {
+          authors: ['AuthorsService', function (AuthorsService) {
+            return AuthorsService.getAuthors();
+          }],
+          genres: ['GenresService', function (GenresService) {
+            return GenresService.getGenres();
+          }]
+        }
+      })
       .state('book', {
 				url: '/books/:id',
 				templateUrl: 'app/views/book.html',
         controller: 'BookController as book_ctrl',
+        resolve: {
+          book: ['$stateParams', 'BooksService', function ($stateParams, BooksService) {
+            return BooksService.getBook($stateParams.id);
+          }]
+        }
+			})
+      .state('book.review-new', {
+				url: '/reviews/new',
+				templateUrl: 'app/views/review_form.html',
+        controller: 'ReviewsController as reviews_ctrl',
+        resolve: {
+          book: ['$stateParams', 'BooksService', function ($stateParams, BooksService) {
+            return BooksService.getBook($stateParams.id);
+          }]
+        }
+			})
+      .state('book.review-edit', {
+				url: '/reviews/edit',
+				templateUrl: 'app/views/review_form.html',
+        controller: 'ReviewsController as reviews_ctrl',
         resolve: {
           book: ['$stateParams', 'BooksService', function ($stateParams, BooksService) {
             return BooksService.getBook($stateParams.id);
@@ -62,26 +95,7 @@ angular
           }]
         }
 			})
-      .state('book.review-new', {
-				url: '/reviews/new',
-				templateUrl: 'app/views/review_form.html',
-        controller: 'ReviewsController as reviews_ctrl',
-        resolve: {
-          book: ['$stateParams', 'BooksService', function ($stateParams, BooksService) {
-            return BooksService.getBook($stateParams.id);
-          }]
-        }
-			})
-      .state('book.review-edit', {
-				url: '/reviews/edit',
-				templateUrl: 'app/views/review_form.html',
-        controller: 'ReviewsController as reviews_ctrl',
-        resolve: {
-          book: ['$stateParams', 'BooksService', function ($stateParams, BooksService) {
-            return BooksService.getBook($stateParams.id);
-          }]
-        }
-			})
+
 
     $urlRouterProvider.otherwise('')
   }])

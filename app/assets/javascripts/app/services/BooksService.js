@@ -1,12 +1,16 @@
 function BooksService($http) {
-	var API_URL = '';
+	var API_URL = '/books';
 
 	this.getBooks = function () {
-		return $http.get(API_URL + '/books.json');
+		return $http.get(API_URL + '.json');
 	};
 
 	this.getBook = function (id) {
-		return $http.get(API_URL + '/books/' + id + '.json');
+		return $http.get(API_URL + '/' + id + '.json');
+	};
+
+	this.postBook = function (data) {
+		return $http.post(API_URL, data);
 	};
 }
 
