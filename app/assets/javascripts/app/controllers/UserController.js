@@ -35,7 +35,7 @@ function UserController($scope, $state, Auth, UserService) {
 }
 
 // mitigate minification issues
-UserController.$inject = ['$state', 'book', 'Auth', 'UserService'];
+UserController.$inject = ['$scope', '$state', 'Auth', 'UserService'];
 
 angular
   .module('app')
