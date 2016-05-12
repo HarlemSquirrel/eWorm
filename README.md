@@ -11,16 +11,11 @@ You can get up and running by first cloning this repo.
 ```
 git clone https://github.com/HarlemSquirrel/eWorm.git
 ```
-Then take a look at the branches with `git branch -a` and switch to a branch with `git checkout <branch-name>` The master branch has the first web app I built with rails running everything. The `jQuery-and-JSON` branch has some resources loading with JQuery talking to Rails via JSON get/post requests. The `angular-single-page-app` branch has more enhancements with everything running on a single page. Angular is really powerful and you can see what I've learned to implement.
+Then take a look at the branches with `git branch -a` and switch to a branch with `git checkout <branch-name>` The master branch has the first web app I built with rails running everything. The `jQuery-and-JSON` branch has some resources loading with JQuery talking to Rails via JSON get/post requests. The `angular-single-page-app` branch has more enhancements with everything running on a single page. Angular is really powerful and you can see what I've learned to implement. I've now merged the angular-single-page-app branch with the master branch. 
 
 Next, you'll need to install the gems. Remember, if you switch branches you will need to run this again.
 ```
 bundle install
-```
-If you're trying out the one-page Angular app, you'll need [Bower](https://github.com/bower/bower) which can be installed with [NPM](https://github.com/npm/npm).
-```
-sudo npm install -g bower
-bower install
 ```
 
 To get the database up and running...
