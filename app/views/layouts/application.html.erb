@@ -2,25 +2,29 @@
 <html>
 <head>
   <title>eWorm</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body id="angularApp" ng-app='app'>
   <header>
-    <h3>eWorm</h3>
-    <%= render '/layouts/navigation' %>
+    <h3><%= link_to 'eWorm', root_url %></h3>
+    <%# render '/layouts/navigation' %>
+    <%= render 'layouts/angular_nav' %>
   </header>
 
-  <div class="main">
-    <%= render '/layouts/messages' %>
+  <div id="main" class="main" ui-view>
+    <%# render '/layouts/messages' %>
 
-    <%= yield %>
+    <%# yield %>
+
+
+
   </div>
 
   <footer>
     <p>
-      Crafted with beer by <%= link_to "HarlemSquirrel", 'http://harlemsquirrel.github.io/' %>
+      Crafted with beer by <%= link_to "HarlemSquirrel", 'http://harlemsquirrel.github.io/', target: "_blank" %>
     </p>
   </footer>
 

@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use postgresql as the database for Active Record
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -16,8 +16,10 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+#gem 'turbolinks' removed for angular front-end
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -55,3 +57,18 @@ end
   # secure user management
   gem 'devise'
   gem 'omniauth-twitter'
+
+  # serializer
+  gem 'active_model_serializers'
+
+  # for AngularJS
+  gem 'angular-rails-templates', '~> 1.0'
+  #gem 'bower-rails' # install bower with `sudo npm install -g bower`
+  # getting started video https://www.youtube.com/watch?v=kkTVhlu7Jg4&feature=youtu.be
+
+  ### AngularDevise
+  # bower install --save angular-devise
+  # https://github.com/cloudspace/angular_devise
+  source "https://rails-assets.org" do
+    gem "rails-assets-angular-devise"
+  end

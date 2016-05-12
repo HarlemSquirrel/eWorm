@@ -1,16 +1,24 @@
 Rails.application.routes.draw do
-  resources :authors, only: [:index, :show]
-  resources :books
-  resources :genres, only: [:index, :show]
+  root 'application#angular'
+  resources :authors, only: [:index, :show], defaults: { format: 'json' }
+  resources :books, defaults: { format: 'json' }
+  resources :genres, only: [:index, :show], defaults: { format: 'json' }
+  resources :reviews, only: [:create, :edit, :update], defaults: { format: 'json' }
+  devise_for :users #, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  #get '/books.json', to: 'books#index'
 
-  resources :reviews, only: [:create, :edit, :update]
-  get '/books/:id/reviews/new', to: 'reviews#new'
+  #resources :authors, only: [:index, :show]
+  #resources :books
+  #resources :genres, only: [:index, :show]
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  resources :users, only: [:show]
+  #resources :reviews, only: [:create, :edit, :update]
+  #get '/books/:id/reviews/new', to: 'reviews#new'
 
-  root to: 'visitors#index'
-  get '/about', to: 'visitors#about'
+  #devise_for :users, :controllers => { :omniauth_callbacks => #"users/omniauth_callbacks" }
+  #resources :users, only: [:show]
+
+  #root to: 'visitors#index'
+  #get '/about', to: 'visitors#about'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

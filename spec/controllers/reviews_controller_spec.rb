@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+# These tests are not valid with angular front-end
+=begin
 RSpec.describe ReviewsController, type: :controller do
   before(:all) do
     @user = FactoryGirl.create(:user)
@@ -38,3 +40,4 @@ RSpec.describe ReviewsController, type: :controller do
     end
   end
 end
+=end

@@ -1,0 +1,35 @@
+<div class="" ng-if="isLoggedIn()">
+  <h3>Write a Review</h3>
+
+  <form name="form" class="form">
+    <div class="errors" ng-messages="form.rating.$error" ng-if="form.rating.$touched">
+      <div ng-message="required">rating is required!</div>
+    </div>
+    <div class="errors" ng-messages="form.content.$error" ng-if="form.content.$touched">
+      <div ng-message="required">Review content is required!</div>
+      <div ng-message="minlength">Review content must be at least 10 characters!</div>
+    </div>
+
+    <label for="rating">Rating</label>
+    <select name="rating"
+      ng-model="reviews_ctrl.rating"
+      ng-options="rating as rating for rating in [5,4,3,2,1]"
+      required=""
+    ></select>
+    <br>
+    <textarea name="content" rows="8" cols="40"
+      placeholder="Write your review here..."
+      required="true"
+      minlength="10"
+      ng-model="reviews_ctrl.content"
+    >
+      {{reviews_ctrl.content}}
+    </textarea>
+
+    <input type="hidden" name="book_id" value="{{book.data.id}}">
+    <br>
+
+  </form>
+  <button ng-if="reviews_ctrl.type === 'new'" ng-click="reviews_ctrl.create()">Create Review</button>
+  <button ng-if="reviews_ctrl.type === 'edit'" ng-click="reviews_ctrl.update()">Update Review</button>
+</div>

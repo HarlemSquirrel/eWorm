@@ -1,10 +1,20 @@
 class BooksController < ApplicationController
   def index
     @books = Book.all
+    #@authors = Author.all
+    #@genres = Genre.all
+    #if user_signed_in?
+    #  @book = Book.new
+#
+    #end
+    respond_to do |f|
+
+      f.json { render json: @books }
+    end
   end
 
   def create
-    return redirect_guests unless logged_in?
+    return redirect_guests unless user_signed_in?
 
     @book = Book.create(
       title: book_params[:title],
@@ -16,7 +26,8 @@ class BooksController < ApplicationController
     if @book.valid?
       @book.save
       flash.notice = "Book addition successful!"
-      redirect_to book_path(@book)
+      #redirect_to book_path(@book)
+      render json: @book, status: 201
     else
       @authors = Author.all
       @genres = Genre.all
@@ -25,7 +36,7 @@ class BooksController < ApplicationController
   end
 
   def new
-    return redirect_guests unless logged_in?
+    return redirect_guests unless user_signed_in?
 
     @book = Book.new
     @authors = Author.all
@@ -35,10 +46,15 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
 
-    if logged_in?
-      @review_by_current_user = current_user.reviews.where(book: @book).first
-    end
+    #if user_signed_in?
+    #  @review_by_current_user = current_user.reviews.where(book: @book).first
+    #end
+    #@review = Review.new if !@review_by_current_user
 
+    respond_to do |f|
+      #f.html { render :show }
+      f.json { render json: @book }
+    end
   end
 
   private

@@ -1,0 +1,13 @@
+<nav>
+  <a ui-sref="books" ui-sref-active="active">Books</a> |
+  <span ng-if="isLoggedIn() == false">
+    <a ui-sref="login" ui-sref-active="active">Log In</a> |
+    <a ui-sref="signup" ui-sref-active="active">Sign Up</a>
+  </span>
+
+  <span ng-if="isLoggedIn()">
+    <a ui-sref="new_book" ui-sref-active="active">Add a Book</a> | 
+    <a ng-click="logOut()" ui-sref-active="active">Log out, {{currentUser.username}}</a>
+  </span>
+
+</nav>

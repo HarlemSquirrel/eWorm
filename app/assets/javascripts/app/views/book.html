@@ -1,0 +1,45 @@
+<div class="book_full" ng-if="book_ctrl.data">
+	<span ng-if='isLoggedIn()'>
+		<a ui-sref="book.review-new" ng-if='book_ctrl.reviewByCurrentUser == false'>
+			<div class="button">
+				Review this book
+			</div>
+		</a>
+		<a ui-sref="book.review-edit" ng-if='book_ctrl.reviewByCurrentUser'>
+			<div class="button">
+				Edit my review
+			</div>
+		</a>
+	</span>
+
+	<a ui-sref="login" ng-if="isLoggedIn() == false">
+		<div class="button">
+			Log in to review this book
+		</div>
+	</a>
+
+	<div ui-view></div>
+
+	<h2 class="book__title">
+		{{ book_ctrl.data.title }}
+	</h2>
+  <a class="book__genre" ui-sref="genre({id: book_ctrl.data.genre.id})">
+		{{ book_ctrl.data.genre.name }}
+	</a><br>
+	by <a class="book__author" ui-sref="author({id: book_ctrl.data.author.id})">
+		{{ book_ctrl.data.author.name }}
+	</a>
+
+	<div class="reviews">
+		<div ng-repeat="review in book_ctrl.data.reviews">
+			{{review.user.username}} said "{{review.content}}"
+		</div>
+		<h3 ng-if="book_ctrl.data.reviews.length === 0">No reviews...yet.</h3>
+	</div>
+</div>
+
+<a ui-sref="books">
+  <div class="button">
+    Browse all books
+  </div>
+</a>

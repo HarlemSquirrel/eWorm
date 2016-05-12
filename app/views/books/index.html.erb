@@ -1,11 +1,25 @@
-<h2>All Books</h2>
-<% if logged_in? %>
-  <%= button_to "Add a book", new_book_path, method: :get %>
-<% end %>
-<ul>
-  <% @books.each do |book| %>
-    <li>
-      <%= render partial: 'book', locals: {book: book} %>
-   </li>
+<p>Genres: | <a href="#" class="genre" id="*">All</a> | 
+  <% @genres.each do |genre| %>
+    <a href="#" class="genre" id="<%=genre.name%>"><%=genre.name%></a> |
   <% end %>
-</ul>
+</p>
+<h2>All Books</h2>
+<% if user_signed_in? %>
+  <div class="toggle">
+    <a href="#" class="toggleForm">Add a Book</a>
+  </div>
+  <div class="newBookForm" style="display: none;">
+    <%= render 'form' %>
+  </div>
+<% end %>
+
+<div id="books">
+</div>
+
+<script type="text/javascript">
+  loadBooks();
+
+  newBookForm();
+
+  genreFilter();
+</script>

@@ -1,0 +1,31 @@
+<h2>Books</h2>
+
+<input ng-model="books_ctrl.search" placeholder="Search" autofocus/>
+Sort by:
+<a href="" ng-click="sorter='title'">Title</a> |
+<a href="" ng-click="sorter='author.name'">Author</a> |
+<a href="" ng-click="sorter='genre.name'">Genre</a>
+
+<div class="books">
+	<div class="book" ng-repeat="book in books_ctrl.paginatedBooks | orderBy :sorter ">
+		<book-summary id="book"></book>
+	</div>
+</div>
+
+	<div>
+		<div id="pagination" class="pagination">
+      <a href="" ng-click="books_ctrl.previousPage()">
+			  <div class="button" ng-if="books_ctrl.page > 0">
+					<< Previous
+			  </div>
+      </a>
+      <a href="" ng-click="books_ctrl.nextPage()">
+  			<div class="button" ng-if="books_ctrl.page < books_ctrl.totalPages - 1">
+  				Next >>
+  			</div>
+      </a>
+		</div>
+
+		<div style="clear: both;"></div>
+	</div>
+</div>

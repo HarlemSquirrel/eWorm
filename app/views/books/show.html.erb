@@ -1,26 +1,26 @@
-<h2>
-  <%= @book.title %><br>
-  by <%= link_to @book.author.name, author_path(@book.author) %></h2>
-<h4>Genre: <%= link_to @book.genre.name, genre_path(@book.genre) %></h4>
-<h4>Published: <%= @book.year_published %></h4>
-<h4>Rating Average: <%= @book.rating_avg %></h4>
+<a href="#" class="js-pre" data-id="<%=@book.id%>">Previous Book</a> |
+<a href="#" class="js-next" data-id="<%=@book.id%>">Next Book</a>
 
-<% if !!@review_by_current_user %>
-  <%= button_to "Edit your review", edit_review_path(@review_by_current_user), method: :get %>
-<% elsif logged_in? %>
-  <%= button_to "Review this book", "/books/#{@book.id}/reviews/new", method: :get %>
-<% end %>
+<div id="book">
+  <h2 class="bookTitle"><%= @book.title %></h2>
+  <h2 class="bookAuthor">by <%= link_to @book.author.name, author_path(@book.author) %></h2>
+  <h4 class="bookGenre">Genre: <%= link_to @book.genre.name, genre_path(@book.genre) %></h4>
+  <h4 class="bookYearPublished">Published: <%= @book.year_published %></h4>
+  <h4 class="bookRatingAvg">Rating Average: <%= @book.rating_avg %></h4>
+
+  <div class="reviewAction">
+    <% if !!@review_by_current_user %>
+      <%= button_to "Edit your review", edit_review_path(@review_by_current_user), method: :get %>
+    <% elsif user_signed_in? %>
+      <%= button_to "Review this book", "/books/#{@book.id}/reviews/new", method: :get %>
+    <% end %>
+  </div>
+</div>
 
 <div class="reviews">
-  <h3>Reviews</h3>
-  <% if @book.unreviewed? %>
-    No reviews...yet!
-  <% else %>
-    <% @book.reviews.each do |review| %>
-      <div class="review">
-        <%= render partial: 'reviews/review', locals: {review: review} %>
-      </div>
-    <% end %>
-  <% end %>
 
 </div>
+
+<script type="text/javascript">
+  showBook();
+</script>

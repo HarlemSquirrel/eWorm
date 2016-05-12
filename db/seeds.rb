@@ -18,7 +18,7 @@ end
   )
 end
 
-6.times do
+28.times do
   Book.create(
     title: Faker::Book.title,
     author: Author.all[rand(Author.all.count)],
@@ -37,11 +37,11 @@ end
 
 User.create(
   username: "the_tester",
-  email: "test@test.com",
-  password:"yeswecan"
+  email: "test@test.net",
+  password:"testwecan"
 )
 
-30.times do
+45.times do
   Review.create(
     content: Faker::Lorem.paragraph,
     book: Book.all[rand(Book.all.count)],

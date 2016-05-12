@@ -1,0 +1,42 @@
+#pagination {
+  display: inline-block;
+}
+
+a:link.active, a:visited.active{
+  text-decoration: underline;
+}
+
+.book {
+  display: inline-block;
+  background-color: rgba(30, 30, 30, 0.5);
+  margin: 5px;
+  padding: 10px;
+  vertical-align: middle;
+  height: 120px;
+  width: 200px;
+}
+
+.book__title {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.button {
+  background-color: rgba(30, 30, 30, 0.5);
+  display: inline-block;
+  padding: 1em;
+  width: 120px;
+}
+
+.button:hover {
+  background-color: rgba(30, 30, 30, 0.3);
+  color: lightgreen;
+}
+
+.errors, .errors > div {
+  background-color: lightgray;
+  color: red;
+  margin: 0 auto;
+  padding: 1px;
+  width: 200px;
+}
