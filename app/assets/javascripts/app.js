@@ -3,7 +3,7 @@ angular
   .config(function ($stateProvider, $urlRouterProvider, AuthProvider) {
     $stateProvider
       .state('home', {
-        url: '/',
+        url: '',
         templateUrl: 'app/views/home.html',
         controller: 'WelcomeController as welcome_ctrl'
       })
@@ -83,7 +83,7 @@ angular
         }
 			})
 
-    $urlRouterProvider.otherwise('/')
+    $urlRouterProvider.otherwise('')
   })
   .run(function ($rootScope, Auth, UserService) {
     $rootScope.$on('$stateChangeStart', function($state, evt, to, params) {
