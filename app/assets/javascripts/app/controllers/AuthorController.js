@@ -4,7 +4,7 @@ function AuthorController(author) {
 }
 
 // mitigate minification issues
-AuthorsController.$inject = ['author'];
+AuthorController.$inject = ['author'];
 
 angular
 	.module('app')

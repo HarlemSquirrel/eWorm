@@ -6,7 +6,7 @@ function WelcomeController($scope, UserService) {
 }
 
 // mitigate minification issues
-WelcomeController.$inject = ['$scope' 'UserService'];
+WelcomeController.$inject = ['$scope', 'UserService'];
 
 angular
   .module('app')
