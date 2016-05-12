@@ -1,4 +1,4 @@
-function ReviewsController($rootScope, $scope, $state, book, ReviewsService) {
+function ReviewsController($rootScope, $state, book, ReviewsService) {
   var ctrl = this;
 	ctrl.book = book.data.book;
   ctrl.type = 'new';
@@ -24,6 +24,9 @@ function ReviewsController($rootScope, $scope, $state, book, ReviewsService) {
     $state.go("book", {id: ctrl.book.id}, {reload: true});
   }
 }
+
+// mitigate minification issues
+ReviewsController.$inject = ['$rootScope', '$state', 'book', 'ReviewsService'];
 
 angular
 	.module('app')

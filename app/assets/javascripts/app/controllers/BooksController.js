@@ -29,6 +29,9 @@ function BooksController(books, $filter, $scope) {
 	};
 }
 
+// mitigate minification issues
+BooksController.$inject = ['books', '$filter', '$scope'];
+
 angular
   .module('app')
   .controller('BooksController', BooksController)

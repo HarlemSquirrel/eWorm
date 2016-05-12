@@ -10,6 +10,9 @@ function AuthorsService($http) {
 	};
 }
 
+// mitigate minification issues
+AuthorsService.$inject = ['$http'];
+
 angular
 	.module('app')
 	.service('AuthorsService', AuthorsService);

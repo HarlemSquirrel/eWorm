@@ -1,6 +1,6 @@
 angular
   .module('app', ['ui.router', 'ngSanitize', 'templates', 'Devise', 'ngMessages'])
-  .config(function ($stateProvider, $urlRouterProvider, AuthProvider) {
+  .config(['$stateProvider', '$urlRouterProvider', 'AuthProvider', function ($stateProvider, $urlRouterProvider, AuthProvider) {
     $stateProvider
       .state('home', {
         url: '',
@@ -27,9 +27,9 @@ angular
         templateUrl: 'app/views/books.html',
         controller: 'BooksController as books_ctrl',
         resolve: {
-          books: function (BooksService) {
+          books: [ 'BooksService', function (BooksService) {
             return BooksService.getBooks();
-          }
+          }]
         }
       })
       .state('book', {
@@ -37,9 +37,9 @@ angular
 				templateUrl: 'app/views/book.html',
         controller: 'BookController as book_ctrl',
         resolve: {
-          book: function ($stateParams, BooksService) {
+          book: ['$stateParams', 'BooksService', function ($stateParams, BooksService) {
             return BooksService.getBook($stateParams.id);
-          }
+          }]
         }
 			})
       .state('author', {
@@ -47,9 +47,9 @@ angular
 				templateUrl: 'app/views/author.html',
         controller: 'AuthorController as author_ctrl',
         resolve: {
-          author: function ($stateParams, AuthorsService) {
+          author: ['$stateParams', 'AuthorsService', function ($stateParams, AuthorsService) {
             return AuthorsService.getAuthor($stateParams.id);
-          }
+          }]
         }
 			})
       .state('genre', {
@@ -57,9 +57,9 @@ angular
 				templateUrl: 'app/views/genre.html',
         controller: 'GenreController as genre_ctrl',
         resolve: {
-          genre: function ($stateParams, GenresService) {
+          genre: ['$stateParams', 'GenresService', function ($stateParams, GenresService) {
             return GenresService.getGenre($stateParams.id);
-          }
+          }]
         }
 			})
       .state('book.review-new', {
@@ -67,9 +67,9 @@ angular
 				templateUrl: 'app/views/review_form.html',
         controller: 'ReviewsController as reviews_ctrl',
         resolve: {
-          book: function ($stateParams, BooksService) {
+          book: ['$stateParams', 'BooksService', function ($stateParams, BooksService) {
             return BooksService.getBook($stateParams.id);
-          }
+          }]
         }
 			})
       .state('book.review-edit', {
@@ -77,15 +77,15 @@ angular
 				templateUrl: 'app/views/review_form.html',
         controller: 'ReviewsController as reviews_ctrl',
         resolve: {
-          book: function ($stateParams, BooksService) {
+          book: ['$stateParams', 'BooksService', function ($stateParams, BooksService) {
             return BooksService.getBook($stateParams.id);
-          }
+          }]
         }
 			})
 
     $urlRouterProvider.otherwise('')
-  })
-  .run(function ($rootScope, Auth, UserService) {
+  }])
+  .run(['$rootScope', 'Auth', 'UserService', function ($rootScope, Auth, UserService) {
     $rootScope.$on('$stateChangeStart', function($state, evt, to, params) {
       Auth.currentUser().then(function(response) {
         $rootScope.currentUser = response.user;
@@ -99,4 +99,4 @@ angular
 
       $rootScope.isLoggedIn = UserService.isLoggedIn;
     })
-  });
+  }]);

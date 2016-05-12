@@ -3,7 +3,7 @@ var BookSummary = {
 	bindings: {
 		id: '='
 	},
-	controller: function (BooksService) {
+	controller: ['BooksService', function (BooksService) {
 		var ctrl = this;
 
 		if (!!ctrl.id.title) { // check for existing book data
@@ -16,9 +16,9 @@ var BookSummary = {
 
 				});
 		}
-		
+
 		ctrl.reviewsCount = ctrl.data.reviews.length;
-	},
+	}],
 	controllerAs: 'bookSummary'
 };
 

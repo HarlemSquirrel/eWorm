@@ -48,6 +48,9 @@ function UserService(Auth, $state) {
   };
 }
 
+// mitigate minification issues
+UserService.$inject = ['Auth', '$state'];
+
 angular
 	.module('app')
 	.service('UserService', UserService);

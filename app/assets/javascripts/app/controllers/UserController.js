@@ -1,4 +1,4 @@
-function UserController($rootScope, $scope, $state, Auth, UserService) {
+function UserController($scope, $state, Auth, UserService) {
   var ctrl = this;
 
   ctrl.login = function () {
@@ -33,6 +33,9 @@ function UserController($rootScope, $scope, $state, Auth, UserService) {
   });
 
 }
+
+// mitigate minification issues
+UserController.$inject = ['$state', 'book', 'Auth', 'UserService'];
 
 angular
   .module('app')

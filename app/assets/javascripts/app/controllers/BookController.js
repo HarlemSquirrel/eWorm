@@ -9,6 +9,9 @@ function BookController(book, $rootScope) {
 	});
 }
 
+// mitigate minification issues
+BookController.$inject = ['book', '$rootScope'];
+
 angular
 	.module('app')
 	.controller('BookController', BookController);

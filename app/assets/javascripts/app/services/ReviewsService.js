@@ -14,6 +14,9 @@ function ReviewsService($http) {
 	}
 }
 
+// mitigate minification issues
+ReviewsService.$inject = ['$http'];
+
 angular
 	.module('app')
 	.service('ReviewsService', ReviewsService);

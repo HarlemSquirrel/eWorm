@@ -10,6 +10,9 @@ function GenresService($http) {
 	};
 }
 
+// mitigate minification issues
+GenresService.$inject = ['$http'];
+
 angular
 	.module('app')
 	.service('GenresService', GenresService);

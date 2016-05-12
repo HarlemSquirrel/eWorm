@@ -3,8 +3,10 @@ function WelcomeController($scope, UserService) {
     debugger;
     return UserService.isLoggedIn();
   }
-  this.message = "hello world";
 }
+
+// mitigate minification issues
+WelcomeController.$inject = ['$scope' 'UserService'];
 
 angular
   .module('app')
