@@ -3,7 +3,10 @@ A book rating app on rails.
 
 This was created for a series of projects for the Full Stack Web Development track at [Learn Verified][learn-co].
 
-# Taking a Test Drive
+# Live Single Page App
+I am now hosting the SPA version of this with Heroku. You can check it out at [eworm.herokuapp.com](eworm.herokuapp.com)
+
+# Taking a Test Drive Yourself
 You can get up and running by first cloning this repo.
 ```
 git clone https://github.com/HarlemSquirrel/eWorm.git

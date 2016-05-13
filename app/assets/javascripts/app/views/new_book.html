@@ -1,0 +1,54 @@
+<div ng-if="isLoggedIn() == false">
+  <h4>You must be logged in to add a book</h4>
+  <h3><a ui-sref="login">Log In</a></h3>
+</div>
+
+<div class="" ng-if="isLoggedIn()">
+  <h2>Add a New Book</h2>
+
+  <form name="form">
+    <div class="errors" ng-messages="form.title.$error" ng-if="form.title.$touched">
+      <div ng-message="required">Title is required!</div>
+    </div>
+    <div class="errors" ng-messages="form.author.$error" ng-if="form.author.$touched">
+      <div ng-message="required">Author is required!</div>
+    </div>
+    <div class="errors" ng-messages="form.genre.$error" ng-if="form.genre.$touched">
+      <div ng-message="required">Genre is required!</div>
+    </div>
+    <div class="errors" ng-messages="form.year_published.$error" ng-if="form.year_published.$touched">
+      <div ng-message="required">Year published is required!</div>
+    </div>
+
+    <input
+      name="title"
+      placeholder="Book Title"
+      autofocus
+      type="text"
+      required="required"
+      ng-model="ctrl.title" />
+      <br><br>
+
+    <input list="authors" placeholder="Author" ng-model="ctrl.author">
+    <datalist id="authors">
+      <option ng-repeat="author in ctrl.authors" value="{{ author.name }}"></option>
+    </datalist>
+    <br><br>
+
+    <input list="genres" placeholder="Genre" ng-model="ctrl.genre">
+    <datalist id="genres_autocomplete">
+      <option ng-repeat="genre in ctrl.genres" value="{{ genre.name }}"></option>
+    </datalist>
+    <br><br>
+
+    <input
+      name="year_published"
+      type="text"
+      placeholder="Year Published"
+      required="required"
+      ng-model="ctrl.year_published" />
+    <br><br>
+
+      <button ng-click="ctrl.create()">Add Book</button>
+  </form>
+</div>
