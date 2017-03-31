@@ -27,5 +27,7 @@ module EWorm
     config.to_prepare do
       DeviseController.respond_to :html, :json
     end
+
+    ActiveModelSerializers.config.adapter = :json
   end
 end
