@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 # These tests are not valid with angular front-end
-=begin
 RSpec.describe ReviewsController, type: :controller do
   before(:all) do
     @user = FactoryGirl.create(:user)
@@ -11,14 +10,14 @@ RSpec.describe ReviewsController, type: :controller do
   end
 
   describe 'PUT create' do
-    it 'when signed in, creats a new review by the current user' do
+    xit 'when signed in, creats a new review by the current user' do
       sign_in(@user)
       put :create, @params
       expect(response).to redirect_to(book_path(@book))
       expect(Review.count).to eq(@num_reviews + 1)
     end
 
-    it 'when not signed in, redirects to login page' do
+    xit 'when not signed in, redirects to login page' do
       sign_out(@user)
       put :create, @params
       expect(@response).to redirect_to(new_user_session_path)
@@ -27,17 +26,16 @@ RSpec.describe ReviewsController, type: :controller do
   end
 
   describe 'GET new' do
-    it 'when signed in, allows access' do
+    xit 'when signed in, allows access' do
       sign_in(@user)
       get :new, id: @book.id
       expect(response).to render_template(:new)
     end
 
-    it 'when not signed in, redirects to login page' do
+    xit 'when not signed in, redirects to login page' do
       sign_out(@user)
       get :new, id: @book.id
       expect(response).to redirect_to(new_user_session_path)
     end
   end
 end
-=end
